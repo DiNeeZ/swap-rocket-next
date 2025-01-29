@@ -1,0 +1,15 @@
+.header {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  padding: 0 0.5rem;
+  border-radius: var(--border-r-sm);
+}

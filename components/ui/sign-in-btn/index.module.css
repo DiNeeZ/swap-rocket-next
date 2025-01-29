@@ -1,0 +1,14 @@
+.btn {
+  padding: 0.6rem 2rem;
+  color: var(--black-color);
+  background-color: var(--brand-color);
+  border-radius: var(--border-r-sm);
+  outline-offset: 2px;
+  outline-color: var(--brand-color);
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}

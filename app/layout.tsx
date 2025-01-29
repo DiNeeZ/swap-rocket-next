@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import "./css/normalize.css";
-import "./css/globals.css";
+import "@/styles/normalize.css";
+import "@/styles/globals.css";
+import { Header } from "@/components/ui/header";
+import { Footer } from "@/components/footer";
 
 const eUkraine = localFont({
   src: [
@@ -54,7 +56,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${eUkraine.className}`}>{children}</body>
+      <body className={`${eUkraine.className}`}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
