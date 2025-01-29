@@ -28,6 +28,17 @@ export const metadata: Metadata = {
   title: "Swap Rocket - Просто и выгодно обменять валюту",
   description:
     "Сайт по поиску обменных пунктов рядом с вами и возможность забронировать нужную сумму.",
+  metadataBase: new URL("https://swap-rocket-next.vercel.app/"),
+  openGraph: {
+    locale: "ru_UA",
+    title: "private-exchange | Просто и выгодно обменять валюту",
+    description:
+      "Сайт по поиску обменных пунктов рядом с вами и возможность забронировать нужную сумму.",
+    type: "website",
+    url: "https://swap-rocket-next.vercel.app/",
+    images: "/banner_og.png",
+    siteName: "swap-rocket-next",
+  },
 };
 
 export default function RootLayout({
