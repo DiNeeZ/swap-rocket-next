@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     url: "https://swap-rocket-next.vercel.app/",
     images: {
       url: "/banner_og.png",
-      width: 512,
-      height: 512,
+      width: "512px",
+      height: "512px",
       alt: "Сайт по поиску обменных пунктов рядом с вами и возможность забронировать нужную сумму",
     },
     siteName: "swap-rocket-next",
