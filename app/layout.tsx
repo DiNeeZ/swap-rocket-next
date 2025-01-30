@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 
 import "@/styles/normalize.css";
 import "@/styles/globals.css";
-import { Header } from "@/components/ui/header";
+import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 const eUkraine = localFont({

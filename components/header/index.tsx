@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Container } from "../container";
+import { Container } from "@/components/ui/container";
 
 import styles from "./index.module.css";
-import { SignInBtn } from "../sign-in-btn";
+import { SignInBtn } from "@/components/ui/sign-in-btn";
 
 export function Header() {
   return (
