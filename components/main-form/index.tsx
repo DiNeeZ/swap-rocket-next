@@ -10,7 +10,7 @@ export function MainForm() {
   const [currency, setCurrency] = useState<Currency>(selectData[0]);
 
   console.table({
-    Режим: mode,
+    Режим: mode === "buy" ? "Покупка" : "Продажа",
     "Текущая валюта": currency.text,
   });
 
