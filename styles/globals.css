@@ -7,21 +7,46 @@
   --brand-color: #ffcc00;
   --black-color: #000000;
   --text-color: #f5f5f5;
+  --text-light-color: #c0c0c0;
   --border-color: rgba(255, 255, 255, 0.1);
+  --border-brand-ghost: rgba(255, 204, 0, 0.3);
 
   --border-r-lg: 2rem;
   --border-r-md: 0.9375rem;
   --border-r-sm: 0.625rem;
-  --container-width: 960px;
+  --container-width: 1200px;
   --container-padding: 15px;
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: var(--black-color);
   color: var(--text-color);
+}
+
+body::before {
+  content: '';
+  background: url('../public/page-decor-l.svg') no-repeat center center/cover;
+  position: absolute;
+  width: 180px;
+  height: 383px;
+  top: 100px;
+  left: 0;
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  background: url('../public/page-decor-r.svg') no-repeat center center/cover;
+  position: absolute;
+  width: 399px;
+  height: 881px;
+  top: 0;
+  right: 0;
+  z-index: -1;
 }
 
 main {

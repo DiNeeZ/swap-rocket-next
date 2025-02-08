@@ -1,6 +1,5 @@
 .header {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 0;
 }
 
 .nav {
@@ -10,6 +9,26 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  text-decoration: none;
   padding: 0 0.5rem;
   border-radius: var(--border-r-sm);
+  transition: opacity 0.15s ease-in;
+}
+
+.logo span {
+  font-weight: 300;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.logo:focus {
+  padding: 0.25rem 0.5rem;
+  outline: 1px solid var(--brand-color);
 }
