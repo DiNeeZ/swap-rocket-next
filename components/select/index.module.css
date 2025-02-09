@@ -1,0 +1,70 @@
+.select {
+  width: 100%;
+  font-size: 23px;
+  line-height: 28px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.current {
+  display: block;
+  white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+  overflow: hidden; /* Скрываем текст, который не помещается */
+  text-overflow: ellipsis; /* Добавляем многоточие в конце */
+  max-width: 300px; /* Ограничиваем ширину контейнера */
+}
+
+.arrow {
+  transition: transform 0.3s ease-in;
+  transform-origin: center;
+}
+
+.select.open .arrow {
+  transform: rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+  max-height: 50vh;
+  top: 50%;
+  border: 2px solid var(--brand-color);
+  border-radius: var(--border-r-md);
+  background-color: var(--black-color);
+
+  /* Glassmorphism */
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.8px);
+  -webkit-backdrop-filter: blur(10.8px);
+  border: 1px solid var(--blure-brand-color);
+
+  box-shadow: 1px 1px 7px var(--blure-brand-color);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.list :global(.simplebar-scrollbar.simplebar-visible:before) {
+  background-color: var(--blure-brand-color);
+}
+
+.option {
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+}
+
+.option:hover {
+  color: var(--brand-color);
+}

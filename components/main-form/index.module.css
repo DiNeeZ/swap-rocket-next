@@ -3,7 +3,7 @@
   flex: 0 0 330px;
   border-radius: var(--border-r-lg);
   border: 1px solid var(--brand-color);
-  padding: 40px;
+  padding: 60px 40px 24px;
 }
 
 .tabs {
@@ -39,5 +39,7 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 27px;
 }

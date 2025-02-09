@@ -8,7 +8,7 @@ export const selectData = [
   {
     id: '7dab8dd4-c284-4ee9-941d-622d3abe7841',
     value: 'usd',
-    text: 'USD - Доллар',
+    text: 'USD - Бiлий Долар',
   },
   {
     id: 'b4d6f1bc-0bd7-4122-a6ce-3bb40bef8dd5',
