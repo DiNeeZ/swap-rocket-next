@@ -19,6 +19,12 @@
   --container-padding: 15px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Minimal CSS Reset */
 html,
 body,

@@ -4,15 +4,26 @@ import React, { useState } from 'react';
 import styles from './index.module.css';
 import Select from '@/components/select';
 import { selectData, type Currency } from '@/data';
+import { Input } from '@/components/ui/input';
+import Button from '../ui/button';
 
 export function MainForm() {
   const [mode, setMode] = useState<'buy' | 'sell'>('buy');
+  const [number, setNumber] = useState<number | ''>('');
   const [currency, setCurrency] = useState<Currency>(selectData[0]);
 
-  // console.table({
-  //   Режим: mode === 'buy' ? 'Покупка' : 'Продажа',
-  //   'Текущая валюта': currency.text,
-  // });
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+
+    if (inputValue === '') {
+      setNumber('');
+    } else {
+      const parsedValue = parseFloat(inputValue);
+      if (!isNaN(parsedValue)) {
+        setNumber(parsedValue);
+      }
+    }
+  };
 
   const buyBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -28,7 +39,13 @@ export function MainForm() {
     }
   };
 
-  console.log(currency);
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.table({
+      Режим: mode === 'buy' ? 'Покупка' : 'Продажа',
+      'Текущая валюта': currency.text,
+    });
+  };
 
   return (
     <form className={styles.form}>
@@ -50,8 +67,13 @@ export function MainForm() {
       </nav>
       <div className={styles.wrapper}>
         <Select options={selectData} value={currency} onChange={setCurrency} />
-        <input type="text" placeholder="500" />
-        <button>Знайти де обміняти</button>
+        <Input
+          type="number"
+          value={number}
+          onChange={handleChange}
+          placeholder="500"
+        />
+        <Button onClick={handleSubmit}>Знайти де обміняти</Button>
       </div>
     </form>
   );

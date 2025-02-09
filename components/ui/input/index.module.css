@@ -1,0 +1,25 @@
+.input {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  outline: none;
+  font-size: 28px;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: var(--border-r-md);
+}
+
+/* Chrome, Safari, Edge, Opera */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input[type='number'] {
+  appearance: textfield;
+}
+
+.input:focus {
+  outline: 1px solid var(--text-color);
+}

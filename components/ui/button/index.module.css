@@ -1,0 +1,16 @@
+.btn {
+  padding: 1.5rem;
+  background-color: var(--brand-color);
+  border-radius: var(--border-r-md);
+  outline: none;
+  transition: opacity 0.15s ease-in;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn:focus {
+  outline: 1px solid var(--brand-color);
+}

@@ -1,5 +1,6 @@
 .form {
   position: relative;
+  max-width: 386px;
   flex: 0 0 330px;
   border-radius: var(--border-r-lg);
   border: 1px solid var(--brand-color);
