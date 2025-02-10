@@ -19,6 +19,7 @@ export function MainForm() {
       setNumber('');
     } else {
       const parsedValue = parseFloat(inputValue);
+
       if (!isNaN(parsedValue)) {
         setNumber(parsedValue);
       }
@@ -68,7 +69,7 @@ export function MainForm() {
       <div className={styles.wrapper}>
         <Select options={selectData} value={currency} onChange={setCurrency} />
         <Input
-          type="number"
+          type="text"
           value={number}
           onChange={handleChange}
           placeholder="500"
