@@ -47,6 +47,7 @@
   border: 1px solid var(--blure-brand-color);
 
   box-shadow: 1px 1px 7px var(--blure-brand-color);
+  z-index: 10;
 }
 
 .list {

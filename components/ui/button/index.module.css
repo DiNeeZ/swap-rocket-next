@@ -3,6 +3,7 @@
   background-color: var(--brand-color);
   border-radius: var(--border-r-md);
   outline: none;
+  border: none;
   transition: opacity 0.15s ease-in;
   cursor: pointer;
 }
@@ -13,4 +14,8 @@
 
 .btn:focus {
   outline: 1px solid var(--brand-color);
+}
+
+.btnSmall {
+  padding: 1rem;
 }

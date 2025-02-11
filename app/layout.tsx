@@ -1,52 +1,52 @@
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import type { Metadata } from "next";
+import localFont from "next/font/local";
 
-import { QueryProvider } from '@/components/query-provider';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import '@/styles/normalize.css';
-import '@/styles/globals.css';
+import { QueryProvider, ExchangersStoreProvider } from "@/providers";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import "@/styles/normalize.css";
+import "@/styles/globals.css";
 
 const eUkraine = localFont({
   src: [
     {
-      path: './fonts/e-ukraine-light.woff2',
-      weight: '300',
-      style: 'normal',
+      path: "./fonts/e-ukraine-light.woff2",
+      weight: "300",
+      style: "normal",
     },
     {
-      path: './fonts/e-ukraine-regular.woff2',
-      weight: '400',
-      style: 'normal',
+      path: "./fonts/e-ukraine-regular.woff2",
+      weight: "400",
+      style: "normal",
     },
     {
-      path: './fonts/e-ukraine-bold.woff2',
-      weight: '700',
-      style: 'normal',
+      path: "./fonts/e-ukraine-bold.woff2",
+      weight: "700",
+      style: "normal",
     },
   ],
 });
 
 export const metadata: Metadata = {
-  title: 'Private Exchangers - Просто і вигідно обміняти валюту',
+  title: "Private Exchangers - Просто і вигідно обміняти валюту",
   description:
-    'Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.',
-  metadataBase: new URL('https://swap-rocket-next.vercel.app/'),
+    "Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.",
+  metadataBase: new URL("https://swap-rocket-next.vercel.app/"),
 
   openGraph: {
-    locale: 'ua_UA',
-    title: 'Private Exchangers | Просто і вигідно обміняти валюту',
+    locale: "ua_UA",
+    title: "Private Exchangers | Просто і вигідно обміняти валюту",
     description:
-      'Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.',
-    type: 'website',
-    url: 'https://swap-rocket-next.vercel.app/',
+      "Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.",
+    type: "website",
+    url: "https://swap-rocket-next.vercel.app/",
     images: {
-      url: '/banner_og.png',
-      width: '512px',
-      height: '512px',
-      alt: 'Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.',
+      url: "/banner_og.png",
+      width: "512px",
+      height: "512px",
+      alt: "Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.",
     },
-    siteName: 'swap-rocket-next',
+    siteName: "swap-rocket-next",
   },
 };
 
@@ -59,9 +59,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${eUkraine.className}`}>
         <QueryProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <ExchangersStoreProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </ExchangersStoreProvider>
         </QueryProvider>
       </body>
     </html>

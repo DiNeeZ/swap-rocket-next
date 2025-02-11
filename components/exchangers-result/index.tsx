@@ -1,61 +1,23 @@
-'use client';
+"use client";
 
-import { useQuery } from '@tanstack/react-query';
-import { Container } from '../ui/container';
-import styles from './index.module.css';
-import { ExchangerCard } from '../exchanger-card';
-
-type Currency = {
-  string: {
-    buy: string;
-    sell: string;
-    sum: string;
-  };
-};
-
-export type Exchanger = {
-  address: string;
-  created_at: string;
-  currency: Currency;
-  exchanger_info: string;
-  id: number;
-  resource_uri: string;
-  telephone: string;
-  updatedAt: string;
-  working_hours: string;
-};
-
-type ExchangersResponse = {
-  meta: {
-    limit: number;
-    next: null | number;
-    offset: number;
-    previous: null | number;
-    total_count: number;
-  };
-  objects: Exchanger[];
-};
-
-async function getPosts(): Promise<ExchangersResponse> {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL!);
-  return response.json();
-}
+// import { useQuery } from "@tanstack/react-query";
+import { Container } from "../ui/container";
+import styles from "./index.module.css";
+import { ExchangerCard } from "../exchanger-card";
+import { useExchangersStore } from "@/providers";
+// import { getPosts } from "@/utils";
 
 export default function ExchangersResult() {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  });
+  const { data, isLoading, error } = useExchangersStore((state) => state);
+
+  console.log("result: ", isLoading);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <div>Loading...</div>;
   }
-
-  if (isError) {
-    return <p>{(error as Error).message}</p>;
+  if (error) {
+    return <div>Error: {error.message}</div>;
   }
-
-  console.log(data);
 
   return (
     <section className={styles.result}>

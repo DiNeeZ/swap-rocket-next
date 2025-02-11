@@ -1,22 +1,41 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import styles from './index.module.css';
-import Select from '@/components/select';
-import { selectData, type Currency } from '@/data';
-import { Input } from '@/components/ui/input';
-import Button from '../ui/button';
+import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import Select from "@/components/select";
+import { Input } from "@/components/ui/input";
+import Button from "@/components/ui/button";
+import { selectData, type Currency } from "@/data";
+import styles from "./index.module.css";
+import { getPosts } from "@/utils";
+import FormTabs from "./form-tabs";
+import { useExchangersStore } from "@/providers";
 
 export function MainForm() {
-  const [mode, setMode] = useState<'buy' | 'sell'>('buy');
-  const [number, setNumber] = useState<number | ''>('');
+  const [mode, setMode] = useState<"buy" | "sell">("buy");
+  const [number, setNumber] = useState<number | "">("");
   const [currency, setCurrency] = useState<Currency>(selectData[0]);
+  const { setExchangers, setIsLoading, setError } = useExchangersStore(
+    (state) => state
+  );
+
+  const { data, refetch, isLoading, error } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+    enabled: false,
+  });
+
+  useEffect(() => {
+    setExchangers(data);
+    setIsLoading(isLoading);
+    setError(error);
+  }, [data, isLoading, error]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
 
-    if (inputValue === '') {
-      setNumber('');
+    if (inputValue === "") {
+      setNumber("");
     } else {
       const parsedValue = parseFloat(inputValue);
 
@@ -26,46 +45,14 @@ export function MainForm() {
     }
   };
 
-  const buyBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (mode !== 'buy') {
-      setMode('buy');
-    }
-  };
-
-  const sellBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (mode !== 'sell') {
-      setMode('sell');
-    }
-  };
-
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.table({
-      Режим: mode === 'buy' ? 'Покупка' : 'Продажа',
-      'Текущая валюта': currency.text,
-    });
+    refetch();
   };
 
   return (
     <form className={styles.form}>
-      <nav className={styles.tabs}>
-        <button
-          className={styles.navBtn}
-          onClick={buyBtnClick}
-          disabled={mode === 'buy'}
-        >
-          Купить
-        </button>
-        <button
-          className={styles.navBtn}
-          onClick={sellBtnClick}
-          disabled={mode === 'sell'}
-        >
-          Продать
-        </button>
-      </nav>
+      <FormTabs mode={mode} setMode={setMode} />
       <div className={styles.wrapper}>
         <Select options={selectData} value={currency} onChange={setCurrency} />
         <Input
@@ -74,7 +61,9 @@ export function MainForm() {
           onChange={handleChange}
           placeholder="500"
         />
-        <Button onClick={handleSubmit}>Знайти де обміняти</Button>
+        <Button onClick={handleSubmit} disabled={isLoading}>
+          Знайти де обміняти
+        </Button>
       </div>
     </form>
   );

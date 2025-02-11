@@ -1,4 +1,8 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
   border: 1px solid var(--blure-brand-color);
 
   /* Glassmorphism */
@@ -7,4 +11,54 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.8px);
   -webkit-backdrop-filter: blur(10.8px);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rate {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.address {
+  font-size: 15px;
+  color: var(--text-light-color);
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.locationText {
+  font-size: 13px;
+  color: var(--text-light-color);
+}
+
+.iconWrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  padding: 1rem 1.2rem;
+  background-color: var(--brand-color);
+  border-radius: 15px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
