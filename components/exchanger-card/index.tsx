@@ -1,5 +1,5 @@
 import Button from "@/components/ui/button";
-import type { Exchanger } from "@/components/exchangers-result";
+import type { Exchanger } from "@/types";
 import styles from "./index.module.css";
 import { Location } from "@/components/ui/icons";
 import Link from "next/link";
