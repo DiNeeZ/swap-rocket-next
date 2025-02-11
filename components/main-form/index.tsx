@@ -29,7 +29,7 @@ export function MainForm() {
     setExchangers(data);
     setIsLoading(isLoading);
     setError(error);
-  }, [data, isLoading, error]);
+  }, [data, isLoading, error, setExchangers, setIsLoading, setError]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
