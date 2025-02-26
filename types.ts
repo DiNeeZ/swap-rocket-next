@@ -7,15 +7,16 @@ export type Currency = {
 };
 
 export type Exchanger = {
-  address: string;
-  created_at: string;
-  currency: Currency;
-  exchanger_info: string;
+  buy: string;
+  currency: string;
+  currency_id: string;
+  exchanger: string;
+  exchanger_id: string;
   id: number;
   resource_uri: string;
-  telephone: string;
+  sell: string;
+  sum: number;
   updatedAt: string;
-  working_hours: string;
 };
 
 export type ExchangersResponse = {

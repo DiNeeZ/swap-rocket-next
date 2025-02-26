@@ -5,31 +5,63 @@ import { useQuery } from "@tanstack/react-query";
 import Select from "@/components/select";
 import { Input } from "@/components/ui/input";
 import Button from "@/components/ui/button";
-import { selectData, type Currency } from "@/data";
+import { type Currency } from "@/data";
 import styles from "./index.module.css";
-import { getPosts } from "@/utils";
+import { getExchangers } from "@/utils";
 import FormTabs from "./form-tabs";
 import { useExchangersStore } from "@/providers";
 
 export function MainForm() {
   const [mode, setMode] = useState<"buy" | "sell">("buy");
   const [number, setNumber] = useState<number | "">("");
-  const [currency, setCurrency] = useState<Currency>(selectData[0]);
-  const { setExchangers, setIsLoading, setError } = useExchangersStore(
-    (state) => state
-  );
+  const [currencyList, setCurrencyList] = useState<Currency[] | null>(null);
+  const [currency, setCurrency] = useState<Currency | null>(null);
+  const { setExchangers, setExchangerMode, setIsLoading, setError } =
+    useExchangersStore((state) => state);
 
   const { data, refetch, isLoading, error } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPosts,
+    queryKey: ["exchangers"],
+    queryFn: () => {
+      if (currency && typeof number === "number") {
+        return getExchangers(Number(currency.id), number);
+      }
+      return Promise.resolve(null);
+    },
     enabled: false,
   });
 
   useEffect(() => {
-    setExchangers(data);
+    const fetchCurrenncyList = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/currency/`
+      );
+      const { objects } = await response.json();
+
+      setCurrencyList(objects as Currency[]);
+    };
+
+    fetchCurrenncyList();
+  }, []);
+
+  useEffect(() => {
+    setExchangers(data ?? undefined);
+    setExchangerMode(mode);
     setIsLoading(isLoading);
     setError(error);
-  }, [data, isLoading, error, setExchangers, setIsLoading, setError]);
+  }, [
+    data,
+    mode,
+    isLoading,
+    error,
+    setExchangers,
+    setExchangerMode,
+    setIsLoading,
+    setError,
+  ]);
+
+  useEffect(() => {
+    if (currencyList) setCurrency(currencyList[0]);
+  }, [currencyList]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -54,7 +86,11 @@ export function MainForm() {
     <form className={styles.form}>
       <FormTabs mode={mode} setMode={setMode} />
       <div className={styles.wrapper}>
-        <Select options={selectData} value={currency} onChange={setCurrency} />
+        <Select
+          options={currencyList}
+          value={currency}
+          onChange={setCurrency}
+        />
         <Input
           type="text"
           value={number}

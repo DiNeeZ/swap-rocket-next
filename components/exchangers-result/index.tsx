@@ -6,7 +6,9 @@ import { ExchangerCard } from "../exchanger-card";
 import { useExchangersStore } from "@/providers";
 
 export default function ExchangersResult() {
-  const { data, isLoading, error } = useExchangersStore((state) => state);
+  const { data, exchangerMode, isLoading, error } = useExchangersStore(
+    (state) => state
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -21,7 +23,7 @@ export default function ExchangersResult() {
         <ul className={styles.list}>
           {data?.objects.map((item) => (
             <li key={item.id}>
-              <ExchangerCard exchanger={item} />
+              <ExchangerCard exchanger={item} mode={exchangerMode} />
             </li>
           ))}
         </ul>

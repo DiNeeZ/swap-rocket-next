@@ -1,8 +1,8 @@
-import { Container } from '@/components/ui/container';
-import { MainForm } from '@/components/main-form';
-import styles from './page.module.css';
-import { dataSteps } from '@/data';
-import ExchangersResult from '@/components/exchangers-result';
+import { Container } from "@/components/ui/container";
+import { MainForm } from "@/components/main-form";
+import styles from "./page.module.css";
+import { dataSteps } from "@/data";
+import ExchangersResult from "@/components/exchangers-result";
 
 export default function Home() {
   return (

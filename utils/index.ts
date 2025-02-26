@@ -1,3 +1,3 @@
-import { getPosts } from "./api";
+import { getExchangers } from "./api";
 
-export { getPosts };
+export { getExchangers };
