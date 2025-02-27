@@ -64,13 +64,20 @@ export function MainForm() {
   }, [currencyList]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
+    let inputValue = event.target.value;
+
+    // Разрешаем только цифры и точку (без минуса)
+    inputValue = inputValue.replace(/[^0-9.]/g, "");
+
+    // Предотвращаем ввод нескольких точек подряд
+    if ((inputValue.match(/\./g) || []).length > 1) {
+      inputValue = inputValue.slice(0, -1);
+    }
 
     if (inputValue === "") {
       setNumber("");
     } else {
       const parsedValue = parseFloat(inputValue);
-
       if (!isNaN(parsedValue)) {
         setNumber(parsedValue);
       }
@@ -93,6 +100,8 @@ export function MainForm() {
         />
         <Input
           type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           value={number}
           onChange={handleChange}
           placeholder="500"
