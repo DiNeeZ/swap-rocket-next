@@ -4,6 +4,7 @@ import { Container } from "../ui/container";
 import styles from "./index.module.css";
 import { ExchangerCard } from "../exchanger-card";
 import { useExchangersStore } from "@/providers";
+import { Spinner } from "../ui/spinner";
 
 export default function ExchangersResult() {
   const { data, exchangerMode, isLoading, error } = useExchangersStore(
@@ -11,7 +12,7 @@ export default function ExchangersResult() {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner variant="accent" />;
   }
   if (error) {
     return <div>Error: {error.message}</div>;

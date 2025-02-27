@@ -7,11 +7,12 @@ export type Currency = {
 };
 
 export type Exchanger = {
+  address: string;
+  address_map: string;
   buy: string;
   currency: string;
   currency_id: string;
   exchanger: string;
-  exchanger_id: string;
   id: number;
   resource_uri: string;
   sell: string;

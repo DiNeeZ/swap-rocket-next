@@ -19,7 +19,7 @@ export function MainForm() {
   const { setExchangers, setExchangerMode, setIsLoading, setError } =
     useExchangersStore((state) => state);
 
-  const { data, refetch, isLoading, error } = useQuery({
+  const { data, refetch, isLoading, isFetching, error } = useQuery({
     queryKey: ["exchangers"],
     queryFn: () => {
       if (currency && typeof number === "number") {
@@ -46,12 +46,13 @@ export function MainForm() {
   useEffect(() => {
     setExchangers(data ?? undefined);
     setExchangerMode(mode);
-    setIsLoading(isLoading);
+    setIsLoading(isLoading || isFetching);
     setError(error);
   }, [
     data,
     mode,
     isLoading,
+    isFetching,
     error,
     setExchangers,
     setExchangerMode,

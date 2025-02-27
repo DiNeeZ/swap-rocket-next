@@ -1,9 +1,4 @@
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
   padding: 1.5rem;
   border: 1px solid var(--border-color);
 
@@ -13,6 +8,7 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.8px);
   -webkit-backdrop-filter: blur(10.8px);
+  transition: background-color 0.15s ease-in-out;
 }
 
 .card:hover {
@@ -22,7 +18,8 @@
 .content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
 }
 
 .info {
@@ -33,6 +30,7 @@
 
 .rate {
   font-size: 32px;
+  line-height: 42px;
   font-weight: 700;
 }
 
@@ -42,21 +40,27 @@
 }
 
 .location {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 0.25rem;
   align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
 }
 
 .card:hover .location {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.card:hover .location:hover {
+  opacity: 0.75;
 }
 
 .locationText {
   font-size: 13px;
+  line-height: 16px;
   color: var(--text-light-color);
 }
 

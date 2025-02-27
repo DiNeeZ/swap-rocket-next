@@ -1,5 +1,15 @@
 import styles from "./index.module.css";
 
-export function Spinner() {
-  return <span className={styles.spinner}></span>;
+type SpinnerProps = {
+  variant?: "default" | "accent";
+};
+
+export function Spinner({ variant = "default" }: SpinnerProps) {
+  return (
+    <span
+      className={`${styles.spinner}${
+        variant === "accent" ? ` ${styles.accent}` : ""
+      }`}
+    ></span>
+  );
 }
