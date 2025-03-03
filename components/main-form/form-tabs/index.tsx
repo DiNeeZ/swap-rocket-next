@@ -26,14 +26,14 @@ export default function FormTabs({ mode, setMode }: FormTabsProps) {
         onClick={buyBtnClick}
         disabled={mode === "buy"}
       >
-        Купівля
+        Купити
       </button>
       <button
         className={styles.navBtn}
         onClick={sellBtnClick}
         disabled={mode === "sell"}
       >
-        Продаж
+        Продати
       </button>
     </nav>
   );

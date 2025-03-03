@@ -10,6 +10,5 @@ export async function getExchangers(
   );
 
   const exchangers = await response.json();
-  console.log(exchangers);
   return exchangers;
 }
