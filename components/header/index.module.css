@@ -32,3 +32,18 @@
   padding: 0.25rem 0.5rem;
   outline: 1px solid var(--brand-color);
 }
+
+@media screen and (max-width: 576px) {
+  .header {
+    padding: 2.8rem 0 2rem;
+  }
+
+  .logo {
+    font-size: 1.125rem;
+  }
+
+  .logoImg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

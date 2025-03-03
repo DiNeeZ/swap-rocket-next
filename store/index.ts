@@ -19,7 +19,7 @@ export type ExchangersStore = ExchangersState & ExchangersActions;
 
 export const defaultInitState: ExchangersState = {
   data: undefined,
-  exchangerMode: "sell",
+  exchangerMode: "buy",
   isLoading: false,
   error: null,
 };

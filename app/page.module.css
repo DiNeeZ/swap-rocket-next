@@ -107,3 +107,64 @@
   font-size: 16px;
   line-height: 20px;
 }
+
+@media screen and (max-width: 1024px) {
+  .stepsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page {
+    gap: 1rem;
+  }
+
+  .textWrapper {
+    gap: 18px;
+  }
+
+  .title {
+    font-size: 1.875rem;
+    text-align: center;
+    line-height: 2.25rem;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .rate {
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .inner {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .stepsList {
+    align-self: center;
+    max-width: 368px;
+    grid-template-columns: 1fr;
+  }
+
+  .stepsItem {
+    gap: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-brand-ghost);
+    border-radius: 1rem;
+  }
+
+  .stepsNumber {
+    font-weight: 700;
+    font-size: 50px;
+  }
+
+  .stepsContent {
+    gap: 0;
+  }
+}

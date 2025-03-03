@@ -21,3 +21,9 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
+@media screen and (max-width: 576px) {
+  .input {
+    padding: 0.625rem 1.5rem;
+  }
+}

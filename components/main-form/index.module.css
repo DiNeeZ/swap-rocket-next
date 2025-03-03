@@ -1,10 +1,17 @@
 .form {
   position: relative;
   max-width: 386px;
-  flex: 0 0 330px;
   border-radius: var(--border-r-lg);
   border: 1px solid var(--brand-color);
   padding: 60px 40px 24px;
+
+  /* Glassmorphism */
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.8px);
+  -webkit-backdrop-filter: blur(10.8px);
+  transition: background-color 0.15s ease-in-out;
 }
 
 .wrapper {
@@ -12,4 +19,12 @@
   flex-direction: column;
   justify-content: center;
   gap: 27px;
+}
+
+@media screen and (max-width: 576px) {
+  .form {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 24px;
+  }
 }

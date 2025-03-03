@@ -141,7 +141,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -161,8 +161,8 @@ body {
 }
 
 body::before {
-  content: '';
-  background: url('../public/page-decor-l.svg') no-repeat center center/cover;
+  content: "";
+  background: url("../public/page-decor-l.svg") no-repeat center center/cover;
   position: absolute;
   width: 180px;
   height: 383px;
@@ -173,8 +173,8 @@ body::before {
 }
 
 body::after {
-  content: '';
-  background: url('../public/page-decor-r.svg') no-repeat center center/cover;
+  content: "";
+  background: url("../public/page-decor-r.svg") no-repeat center center/cover;
   position: absolute;
   width: 399px;
   height: 881px;
@@ -194,4 +194,10 @@ a {
 
 .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
   background-color: var(--brand-color);
+}
+
+@media screen and (max-width: 576px) {
+  main {
+    margin-top: 0;
+  }
 }

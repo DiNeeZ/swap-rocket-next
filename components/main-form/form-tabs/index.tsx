@@ -23,17 +23,17 @@ export default function FormTabs({ mode, setMode }: FormTabsProps) {
     <nav className={styles.tabs}>
       <button
         className={styles.navBtn}
-        onClick={sellBtnClick}
-        disabled={mode === "sell"}
-      >
-        Продати
-      </button>
-      <button
-        className={styles.navBtn}
         onClick={buyBtnClick}
         disabled={mode === "buy"}
       >
         Купити
+      </button>
+      <button
+        className={styles.navBtn}
+        onClick={sellBtnClick}
+        disabled={mode === "sell"}
+      >
+        Продати
       </button>
     </nav>
   );

@@ -12,7 +12,7 @@ import FormTabs from "./form-tabs";
 import { useExchangersStore } from "@/providers";
 
 export function MainForm() {
-  const [mode, setMode] = useState<"buy" | "sell">("sell");
+  const [mode, setMode] = useState<"buy" | "sell">("buy");
   const [number, setNumber] = useState<number | "">("");
   const [currencyList, setCurrencyList] = useState<Currency[] | null>(null);
   const [currency, setCurrency] = useState<Currency | null>(null);
