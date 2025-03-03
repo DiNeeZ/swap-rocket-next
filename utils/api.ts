@@ -8,5 +8,8 @@ export async function getExchangers(
     `${process.env
       .NEXT_PUBLIC_API_URL!}/currencys/?currency=${currencyId}&sum__gte=${sum}`
   );
-  return response.json();
+
+  const exchangers = await response.json();
+  console.log(exchangers);
+  return exchangers;
 }
