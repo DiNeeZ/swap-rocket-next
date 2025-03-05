@@ -58,6 +58,18 @@
   opacity: 0.75;
 }
 
+.card button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+
+.card:hover button {
+  color: var(--black-color);
+  background-color: var(--brand-color);
+  border: 1px solid transparent;
+}
+
 .locationText {
   font-size: 13px;
   line-height: 16px;
@@ -78,4 +90,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    border-color: var(--blure-brand-color);
+  }
+  .location {
+    visibility: visible;
+    opacity: 1;
+  }
+  .card button {
+    color: var(--black-color);
+    background-color: var(--brand-color);
+    border: 1px solid transparent;
+  }
 }

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 
 import styles from "./index.module.css";
-import { SignInBtn } from "@/components/ui/sign-in-btn";
 
 export function Header() {
   return (
@@ -20,13 +19,6 @@ export function Header() {
             />
             Private <span>exchanges</span>
           </Link>
-          <SignInBtn
-            href="https://swap-rocket-currency-api.onrender.com/admin/"
-            target="_blank"
-            title="Увійти admin"
-          >
-            Службовий вхід
-          </SignInBtn>
         </nav>
       </Container>
     </header>

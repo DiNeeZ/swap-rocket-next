@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 
 import Button from "@/components/ui/button";
@@ -14,19 +13,10 @@ type ExchangerCardProps = {
 };
 
 export function ExchangerCard({ exchanger, mode }: ExchangerCardProps) {
-  const [buttonVariant, setButtonVariant] = useState<"default" | "ghost">(
-    "ghost"
-  );
   const value = mode === "buy" ? exchanger.buy : exchanger.sell;
 
   return (
-    <article
-      className={styles.card}
-      onMouseEnter={() => [setButtonVariant("default")]}
-      onMouseLeave={() => {
-        setButtonVariant("ghost");
-      }}
-    >
+    <article className={styles.card}>
       <div className={styles.content}>
         <div className={styles.info}>
           <span className={styles.rate}>{value}</span>
@@ -44,9 +34,7 @@ export function ExchangerCard({ exchanger, mode }: ExchangerCardProps) {
         </Link>
       </div>
 
-      <Button variant={buttonVariant} size="small">
-        Забронювати
-      </Button>
+      <Button size="small">Забронювати</Button>
     </article>
   );
 }
