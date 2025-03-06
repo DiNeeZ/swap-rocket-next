@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Montserrat } from "next/font/google";
 
 import { SelectDropdown } from "./select-dropdown";
@@ -8,29 +8,37 @@ import type { Currency } from "@/data";
 
 import "simplebar-react/dist/simplebar.min.css";
 import styles from "./index.module.css";
+import { SelectMobileDropdown } from "./select-mobile-dropdown";
 
 type SelectProps = {
   options: Currency[] | null;
   value: Currency | null;
   onChange: (currency: Currency) => void;
+  isSelectOpen: boolean;
+  setIsSelectOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const montserrat = Montserrat({ weight: "400", subsets: ["latin"] });
 
-const Select = ({ options, value, onChange }: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Select = ({
+  options,
+  value,
+  onChange,
+  isSelectOpen,
+  setIsSelectOpen,
+}: SelectProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        setIsSelectOpen(false);
       }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        setIsSelectOpen(false);
       }
     };
 
@@ -40,11 +48,11 @@ const Select = ({ options, value, onChange }: SelectProps) => {
       document.removeEventListener("click", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [ref]);
+  }, [ref, setIsSelectOpen]);
 
   const handleOptionClick = (option: Currency) => {
     onChange(option);
-    setIsOpen(false);
+    setIsSelectOpen(false);
   };
 
   if (!options) return <Spinner />;
@@ -54,18 +62,27 @@ const Select = ({ options, value, onChange }: SelectProps) => {
     <div
       ref={ref}
       className={`${styles.select} ${montserrat.className}${
-        isOpen ? ` ${styles.open}` : ""
+        isSelectOpen ? ` ${styles.open}` : ""
       }`}
     >
-      <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
+      <div
+        className={styles.header}
+        onClick={() => setIsSelectOpen(!isSelectOpen)}
+      >
         <span className={styles.current}>{value.name}</span>
         <SelectArrow className={styles.arrow} />
       </div>
-      {isOpen && (
-        <SelectDropdown
-          options={options}
-          handleOptionClick={handleOptionClick}
-        />
+      {isSelectOpen && (
+        <>
+          <SelectDropdown
+            options={options}
+            handleOptionClick={handleOptionClick}
+          />
+          <SelectMobileDropdown
+            options={options}
+            handleOptionClick={handleOptionClick}
+          />
+        </>
       )}
     </div>
   );

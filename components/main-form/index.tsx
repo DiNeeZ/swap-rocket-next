@@ -16,6 +16,7 @@ export function MainForm() {
   const [number, setNumber] = useState<number | "">("");
   const [currencyList, setCurrencyList] = useState<Currency[] | null>(null);
   const [currency, setCurrency] = useState<Currency | null>(null);
+  const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
   const { setExchangers, setExchangerMode, setIsLoading, setError } =
     useExchangersStore((state) => state);
 
@@ -91,13 +92,19 @@ export function MainForm() {
   };
 
   return (
-    <form className={styles.form}>
+    <form
+      className={`${styles.form}${
+        isSelectOpen ? ` ${styles.selectorOpen}` : ""
+      }`}
+    >
       <FormTabs mode={mode} setMode={setMode} />
       <div className={styles.wrapper}>
         <Select
           options={currencyList}
           value={currency}
           onChange={setCurrency}
+          isSelectOpen={isSelectOpen}
+          setIsSelectOpen={setIsSelectOpen}
         />
         <Input
           type="text"

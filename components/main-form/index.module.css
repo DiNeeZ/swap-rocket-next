@@ -29,3 +29,10 @@
     padding-bottom: 24px;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .form.selectorOpen {
+    backdrop-filter: unset;
+    -webkit-backdrop-filter: unset;
+  }
+}

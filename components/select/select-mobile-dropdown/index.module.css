@@ -1,0 +1,15 @@
+.options {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: var(--brand-color);
+  z-index: 10;
+}
+
+@media screen and (max-width: 576px) {
+  .options {
+    display: flex;
+  }
+}

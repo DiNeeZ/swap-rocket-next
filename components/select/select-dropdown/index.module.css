@@ -39,3 +39,9 @@
 .option:hover {
   color: var(--brand-color);
 }
+
+@media screen and (max-width: 576px) {
+  .options {
+    display: none;
+  }
+}
