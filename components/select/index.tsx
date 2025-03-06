@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import SimpleBar from "simplebar-react";
 import { Montserrat } from "next/font/google";
 
+import { SelectDropdown } from "./select-dropdown";
+import { Spinner } from "../ui/spinner";
 import { SelectArrow } from "../ui/icons";
 import type { Currency } from "@/data";
 
 import "simplebar-react/dist/simplebar.min.css";
 import styles from "./index.module.css";
-import { Spinner } from "../ui/spinner";
 
 type SelectProps = {
   options: Currency[] | null;
@@ -62,19 +62,10 @@ const Select = ({ options, value, onChange }: SelectProps) => {
         <SelectArrow className={styles.arrow} />
       </div>
       {isOpen && (
-        <SimpleBar className={styles.options}>
-          <ul className={styles.list}>
-            {options?.map((option) => (
-              <li
-                className={styles.option}
-                key={option.id}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option.name}
-              </li>
-            ))}
-          </ul>
-        </SimpleBar>
+        <SelectDropdown
+          options={options}
+          handleOptionClick={handleOptionClick}
+        />
       )}
     </div>
   );
