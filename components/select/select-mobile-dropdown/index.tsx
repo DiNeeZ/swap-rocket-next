@@ -4,13 +4,25 @@ import styles from "./index.module.css";
 type SelectMobileDropdownProps = {
   options: Currency[] | null;
   handleOptionClick: (option: Currency) => void;
-  // isSelectOpen: boolean;
-  // setIsSelectOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export function SelectMobileDropdown({
   options,
   handleOptionClick,
 }: SelectMobileDropdownProps) {
-  return <div className={styles.options}>SelectMobileDropdown</div>;
+  return (
+    <div className={styles.options}>
+      <ul className={styles.list}>
+        {options?.map((option) => (
+          <li
+            className={styles.option}
+            key={option.id}
+            onClick={() => handleOptionClick(option)}
+          >
+            {option.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
