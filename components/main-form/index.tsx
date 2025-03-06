@@ -17,7 +17,7 @@ export function MainForm() {
   const [currencyList, setCurrencyList] = useState<Currency[] | null>(null);
   const [currency, setCurrency] = useState<Currency | null>(null);
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
-  const { setExchangers, setExchangerMode, setIsLoading, setError } =
+  const { setExchangers, setExchangerMode, setAmount, setIsLoading, setError } =
     useExchangersStore((state) => state);
 
   const { data, refetch, isLoading, isFetching, error } = useQuery({
@@ -47,16 +47,19 @@ export function MainForm() {
   useEffect(() => {
     setExchangers(data ?? undefined);
     setExchangerMode(mode);
+    setAmount(typeof number === "number" ? number : "");
     setIsLoading(isLoading || isFetching);
     setError(error);
   }, [
     data,
     mode,
+    number,
     isLoading,
     isFetching,
     error,
     setExchangers,
     setExchangerMode,
+    setAmount,
     setIsLoading,
     setError,
   ]);

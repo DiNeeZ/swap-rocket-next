@@ -12,6 +12,7 @@ export type Exchanger = {
   buy: string;
   currency: string;
   currency_id: string;
+  currency_name: string;
   exchanger: string;
   id: number;
   resource_uri: string;
@@ -29,4 +30,13 @@ export type ExchangersResponse = {
     total_count: number;
   };
   objects: Exchanger[];
+};
+
+export type OrderData = {
+  address: string;
+  addressMap: string;
+  currencyName: string;
+  price: string;
+  amount: number | "";
+  mode: "buy" | "sell";
 };
