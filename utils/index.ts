@@ -1,3 +1,4 @@
 import { getExchangers } from "./api";
+import { isNowInTimeRange } from "./time-range";
 
-export { getExchangers };
+export { getExchangers, isNowInTimeRange };

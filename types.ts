@@ -19,6 +19,7 @@ export type Exchanger = {
   sell: string;
   sum: number;
   updatedAt: string;
+  working_hours: string;
 };
 
 export type ExchangersResponse = {
@@ -39,4 +40,5 @@ export type OrderData = {
   price: string;
   amount: number | "";
   mode: "buy" | "sell";
+  hours: string;
 };

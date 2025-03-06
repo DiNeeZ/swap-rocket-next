@@ -28,6 +28,7 @@ export function ExchangerCard({ exchanger, mode }: ExchangerCardProps) {
       addressMap: exchanger.address_map,
       currencyName: exchanger.currency_name,
       price: exchanger[mode],
+      hours: exchanger.working_hours,
       amount,
       mode,
     };

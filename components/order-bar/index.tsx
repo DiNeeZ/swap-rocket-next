@@ -36,6 +36,8 @@ export function OrderBar() {
     };
   }, [setIsOpen]);
 
+  console.log(orderData?.hours);
+
   if (orderData)
     return (
       <>
