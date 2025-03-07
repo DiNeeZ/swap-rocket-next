@@ -1,5 +1,14 @@
+function getTimeFromMins(mins: number) {
+  const hours = Math.trunc(mins / 60);
+  const minutes = mins % 60;
+  return (
+    String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0")
+  );
+}
+
 export function isNowInTimeRange(timeRange: string) {
-  const [start, end] = timeRange.split(" - "); // Разделяем строку
+  const newTimeRange = timeRange.replace(/\s+/g, " ").trim();
+  const [start, end] = newTimeRange.split("-"); // Разделяем строку
   const now = new Date();
 
   const [startHour, startMinute] = start.split(":").map(Number);
@@ -11,6 +20,11 @@ export function isNowInTimeRange(timeRange: string) {
   const nowTotal = nowHour * 60 + nowMinute;
   const startTotal = startHour * 60 + startMinute;
   const endTotal = endHour * 60 + endMinute;
+  const isNow = nowTotal >= startTotal && nowTotal <= endTotal;
 
-  return nowTotal >= startTotal && nowTotal <= endTotal;
+  return {
+    isNow,
+    start: getTimeFromMins(startTotal),
+    end: getTimeFromMins(endTotal),
+  };
 }

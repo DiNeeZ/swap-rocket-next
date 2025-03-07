@@ -8,6 +8,7 @@ import { useExchangersStore } from "@/providers";
 import { BackArrow } from "@/components/ui/icons/back-arrow";
 import { Location } from "../ui/icons";
 import Button from "../ui/button";
+import { isNowInTimeRange } from "@/utils";
 import styles from "./index.module.css";
 
 const sidebarVariants = {
@@ -15,6 +16,27 @@ const sidebarVariants = {
   visible: { x: 0 },
   exit: { x: "100%" },
 };
+
+function Hours({
+  hours,
+}: {
+  hours: {
+    isNow: boolean;
+    start: string;
+    end: string;
+  };
+}) {
+  if (hours.isNow) {
+    return <div className={styles.hours}>Відчинено до {hours.end}</div>;
+  }
+
+  return (
+    <div className={styles.hours}>
+      <span className={styles.errorText}>Зачинено.</span> Відкриється о{" "}
+      {hours.start}
+    </div>
+  );
+}
 
 export function OrderBar() {
   const orderData = useExchangersStore((store) => store.orderData);
@@ -36,9 +58,8 @@ export function OrderBar() {
     };
   }, [setIsOpen]);
 
-  console.log(orderData?.hours);
-
-  if (orderData)
+  if (orderData) {
+    const hours = isNowInTimeRange(orderData.hours);
     return (
       <>
         <motion.div
@@ -101,7 +122,7 @@ export function OrderBar() {
             <div className={styles.locationWrapper}>
               <div className={styles.locationInfo}>
                 <div className={styles.address}>{orderData.address}</div>
-                <div className={styles.hours}>Відчинено до 20:00</div>
+                <Hours hours={hours} />
               </div>
               <Link
                 className={styles.location}
@@ -135,9 +156,14 @@ export function OrderBar() {
               </div>
             </div>
 
-            <Button type="submit">підтвердити бронювання</Button>
+            <Button disabled={!hours.isNow} type="submit">
+              {hours.isNow
+                ? "підтвердити бронювання"
+                : `Повертайтеся з ${hours.start} до ${hours.end}`}
+            </Button>
           </form>
         </motion.aside>
       </>
     );
+  }
 }

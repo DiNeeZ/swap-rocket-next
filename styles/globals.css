@@ -11,6 +11,7 @@
   --text-light-color: #c0c0c0;
   --border-color: rgba(255, 255, 255, 0.1);
   --border-brand-ghost: rgba(255, 204, 0, 0.3);
+  --error-color: #ff0000;
 
   --border-r-lg: 2rem;
   --border-r-md: 0.9375rem;

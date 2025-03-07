@@ -10,6 +10,7 @@
 
 .sidebar {
   width: 393px;
+  min-height: 100dvh;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -43,7 +44,7 @@
 }
 
 .title {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -51,7 +52,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 27px;
+  gap: 1.5rem;
 }
 
 .formControl {
@@ -167,4 +168,15 @@
 .conclusionValue {
   font-weight: 700;
   font-size: 2rem;
+}
+
+.errorText {
+  color: var(--error-color);
+}
+
+@media screen and (max-width: 576px) {
+  .sidebar {
+    width: 100dvw;
+    inset: 0;
+  }
 }

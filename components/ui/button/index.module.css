@@ -8,12 +8,17 @@
   transition: all 0.15s ease-in-out;
 }
 
-.btn:hover {
+.btn:not(:disabled):hover {
   opacity: 0.85;
 }
 
-.btn:focus {
+.btn:not(:disabled):focus {
   outline: 1px solid var(--brand-color);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .default {
