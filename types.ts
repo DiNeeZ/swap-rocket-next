@@ -42,3 +42,12 @@ export type OrderData = {
   mode: "buy" | "sell";
   hours: string;
 };
+
+export type OrderPostData = {
+  address_exchanger: string;
+  buy_or_sell: string;
+  currency_name: string;
+  exchange_rate: string;
+  order_sum: number;
+  сlients_telephone: string;
+};

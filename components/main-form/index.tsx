@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+
 import Select from "@/components/select";
 import { Input } from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import { type Currency } from "@/data";
 import styles from "./index.module.css";
-import { getExchangers } from "@/utils";
 import FormTabs from "./form-tabs";
 import { useExchangersStore } from "@/providers";
+import { useExchangers } from "@/hooks/useExchangers";
 
 export function MainForm() {
   const [mode, setMode] = useState<"buy" | "sell">("buy");
@@ -20,16 +20,10 @@ export function MainForm() {
   const { setExchangers, setExchangerMode, setAmount, setIsLoading, setError } =
     useExchangersStore((state) => state);
 
-  const { data, refetch, isLoading, isFetching, error } = useQuery({
-    queryKey: ["exchangers"],
-    queryFn: () => {
-      if (currency && typeof number === "number") {
-        return getExchangers(Number(currency.id), number);
-      }
-      return Promise.resolve(null);
-    },
-    enabled: false,
-  });
+  const { data, refetch, isLoading, isFetching, error } = useExchangers(
+    currency,
+    number
+  );
 
   useEffect(() => {
     const fetchCurrenncyList = async () => {

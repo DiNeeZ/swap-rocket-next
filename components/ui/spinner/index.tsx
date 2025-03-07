@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 
 type SpinnerProps = {
-  variant?: "default" | "accent";
+  variant?: "default" | "accent" | "button";
 };
 
 export function Spinner({ variant = "default" }: SpinnerProps) {
@@ -9,7 +9,7 @@ export function Spinner({ variant = "default" }: SpinnerProps) {
     <span
       className={`${styles.spinner}${
         variant === "accent" ? ` ${styles.accent}` : ""
-      }`}
+      }${variant === "button" ? ` ${styles.button}` : ""}`}
     ></span>
   );
 }

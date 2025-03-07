@@ -11,7 +11,10 @@
   --text-light-color: #c0c0c0;
   --border-color: rgba(255, 255, 255, 0.1);
   --border-brand-ghost: rgba(255, 204, 0, 0.3);
-  --error-color: #ff0000;
+  --error-color: #ff5a5d;
+  --error-bg: rgba(255, 90, 93, 0.2);
+  --warning-color: #855d0b;
+  --warning-bg: rgb(133, 93, 11, 0.2);
 
   --border-r-lg: 2rem;
   --border-r-md: 0.9375rem;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -10,6 +10,14 @@ import { Location } from "../ui/icons";
 import Button from "../ui/button";
 import { isNowInTimeRange } from "@/utils";
 import styles from "./index.module.css";
+import { PhoneInput } from "../phone-input";
+import { useCreateOrder } from "@/hooks/useCreateOrder";
+import { OrderData } from "@/types";
+
+const MODE_DICTIONARY = {
+  sell: "купівля",
+  buy: "продаж",
+};
 
 const sidebarVariants = {
   hidden: { x: "100%" },
@@ -39,11 +47,39 @@ function Hours({
 }
 
 export function OrderBar() {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [errorPhone, setErrorPhone] = useState(false);
+  const { mutate, isPending, error } = useCreateOrder();
   const orderData = useExchangersStore((store) => store.orderData);
   const isOpen = useExchangersStore((store) => store.isOrderBarOpen);
   const setIsOpen = useExchangersStore((store) => store.setOrderBarOpen);
 
   const handleClose = () => setIsOpen(false);
+
+  const onChange = (value: string) => {
+    setErrorPhone(false);
+    setPhoneNumber(value);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>, data: OrderData) => {
+    e.preventDefault();
+
+    if (!phoneNumber || phoneNumber.length < 12) {
+      setErrorPhone(true);
+      return;
+    }
+
+    const orderPostData = {
+      address_exchanger: data.address,
+      buy_or_sell: MODE_DICTIONARY[data.mode],
+      currency_name: data.currencyName,
+      exchange_rate: data.price,
+      order_sum: typeof data.amount === "number" ? data.amount : 0,
+      сlients_telephone: `+${phoneNumber}`,
+    };
+
+    mutate(orderPostData);
+  };
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -81,22 +117,19 @@ export function OrderBar() {
           <button className={styles.backButton} onClick={handleClose}>
             <BackArrow />
           </button>
+          {error && <div className={styles.error}>{error.message}</div>}
           <h2 className={styles.title}>Бронювання</h2>
 
-          <form className={styles.form}>
+          <form
+            className={styles.form}
+            onSubmit={(e) => handleSubmit(e, orderData)}
+          >
             {/* PHONE INPUT */}
-            <div className={styles.formControl}>
-              <label className={styles.label} htmlFor="phone">
-                Телефон
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                className={styles.input}
-                type="tel"
-                placeholder="+38"
-              />
-            </div>
+            <PhoneInput
+              value={phoneNumber}
+              onChange={onChange}
+              error={errorPhone}
+            />
 
             {/* INFO */}
             <div className={styles.info}>
@@ -156,7 +189,7 @@ export function OrderBar() {
               </div>
             </div>
 
-            <Button disabled={!hours.isNow} type="submit">
+            <Button disabled={!hours.isNow || isPending} type="submit">
               {hours.isNow
                 ? "підтвердити бронювання"
                 : `Повертайтеся з ${hours.start} до ${hours.end}`}
