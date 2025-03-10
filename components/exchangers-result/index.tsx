@@ -23,7 +23,7 @@ export default function ExchangersResult() {
       <Container>
         <ul className={styles.list}>
           {data?.objects.map((item) => (
-            <li key={item.id}>
+            <li className={styles.item} key={item.id}>
               <ExchangerCard exchanger={item} mode={exchangerMode} />
             </li>
           ))}

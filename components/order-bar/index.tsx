@@ -75,7 +75,7 @@ export function OrderBar() {
       currency_name: data.currencyName,
       exchange_rate: data.price,
       order_sum: typeof data.amount === "number" ? data.amount : 0,
-      сlients_telephone: `+${phoneNumber}`,
+      clients_telephone: `+${phoneNumber}`,
     };
 
     mutate(orderPostData);

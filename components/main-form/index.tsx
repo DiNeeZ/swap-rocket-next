@@ -27,9 +27,7 @@ export function MainForm() {
 
   useEffect(() => {
     const fetchCurrenncyList = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/currency/`
-      );
+      const response = await fetch("/api/currency");
       const { objects } = await response.json();
 
       setCurrencyList(objects as Currency[]);
@@ -83,8 +81,8 @@ export function MainForm() {
     }
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     refetch();
   };
 
@@ -93,6 +91,7 @@ export function MainForm() {
       className={`${styles.form}${
         isSelectOpen ? ` ${styles.selectorOpen}` : ""
       }`}
+      onSubmit={handleSubmit}
     >
       <FormTabs mode={mode} setMode={setMode} />
       <div className={styles.wrapper}>
@@ -111,9 +110,7 @@ export function MainForm() {
           onChange={handleChange}
           placeholder="500"
         />
-        <Button onClick={handleSubmit} disabled={isLoading}>
-          Знайти де обміняти
-        </Button>
+        <Button disabled={isLoading}>Знайти де обміняти</Button>
       </div>
     </form>
   );

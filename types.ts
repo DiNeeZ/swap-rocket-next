@@ -49,5 +49,5 @@ export type OrderPostData = {
   currency_name: string;
   exchange_rate: string;
   order_sum: number;
-  сlients_telephone: string;
+  clients_telephone: string;
 };

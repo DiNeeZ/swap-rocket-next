@@ -5,8 +5,7 @@ export async function getExchangers(
   sum: number
 ): Promise<ExchangersResponse> {
   const response = await fetch(
-    `${process.env
-      .NEXT_PUBLIC_API_URL!}/currencys/?currency=${currencyId}&sum__gte=${sum}`
+    `/api/exchangers?currencyId=${currencyId}&sum=${sum}`
   );
 
   const exchangers = await response.json();
@@ -14,16 +13,12 @@ export async function getExchangers(
 }
 
 export async function createOrder(data: OrderPostData): Promise<void> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL!}/orders/`, {
+  const res = await fetch(`/api/order`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `ApiKey ${process.env.NEXT_PUBLIC_API_KEY}`,
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error("Помилка при створенні замовлення");
-  }
+  const result = await res.json();
+  console.log(result);
 }
