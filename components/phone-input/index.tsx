@@ -33,6 +33,7 @@ export function PhoneInput({
 
       <IMaskInput
         id="phone"
+        type="tel"
         name="phone"
         mask={"+{38} (000) 000-00-00"}
         radix="."
