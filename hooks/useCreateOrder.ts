@@ -16,7 +16,6 @@ export function useCreateOrder() {
     mutationFn: createOrder,
     onSuccess: (data) => {
       setOrderBarIsOpen(false);
-      console.log("Ответ от сервера:", data);
       setOrderResponse(data);
       setToastBarIsOpen(true);
     },

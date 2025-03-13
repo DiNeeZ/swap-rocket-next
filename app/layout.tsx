@@ -6,6 +6,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import "@/styles/normalize.css";
 import "@/styles/globals.css";
+import { OrderBar } from "@/components/order-bar";
+import OrderToast from "@/components/order-toast";
 
 const eUkraine = localFont({
   src: [
@@ -63,6 +65,8 @@ export default function RootLayout({
             <Header />
             <main>{children}</main>
             <Footer />
+            <OrderBar />
+            <OrderToast />
           </ExchangersStoreProvider>
         </QueryProvider>
       </body>
