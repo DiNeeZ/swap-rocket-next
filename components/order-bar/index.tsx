@@ -4,15 +4,16 @@ import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import { useExchangersStore } from "@/providers";
 import { BackArrow } from "@/components/ui/icons/back-arrow";
-import { Location } from "../ui/icons";
-import Button from "../ui/button";
-import { isNowInTimeRange } from "@/utils";
-import styles from "./index.module.css";
-import { PhoneInput } from "../phone-input";
+import { Location } from "@/components/ui/icons";
+import Button from "@/components/ui/button";
+import { PhoneInput } from "@/components/phone-input";
 import { useCreateOrder } from "@/hooks/useCreateOrder";
+
+import { useExchangersStore } from "@/providers";
+import { isNowInTimeRange } from "@/utils";
 import { OrderData } from "@/types";
+import styles from "./index.module.css";
 
 const MODE_DICTIONARY = {
   sell: "купівля",

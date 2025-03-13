@@ -43,6 +43,19 @@ export type OrderData = {
   hours: string;
 };
 
+export type OrderResponse = {
+  address_exchanger: string;
+  buy_or_sell: string;
+  clients_telephone: string;
+  created_at: string;
+  currency_name: string;
+  exchange_rate: string;
+  id: number;
+  order_sum: number;
+  resource_uri: string;
+  status: string;
+};
+
 export type OrderPostData = {
   address_exchanger: string;
   buy_or_sell: string;

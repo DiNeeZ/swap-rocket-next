@@ -15,7 +15,9 @@ export async function POST(request: Request) {
 
     if (!res.ok) throw new Error("Помилка при створенні замовлення");
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    const data = await res.json();
+
+    return NextResponse.json(data, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       {

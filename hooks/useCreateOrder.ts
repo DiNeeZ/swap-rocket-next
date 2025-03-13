@@ -4,12 +4,21 @@ import { createOrder } from "@/utils/api";
 import { useExchangersStore } from "@/providers";
 
 export function useCreateOrder() {
-  const setIsOpen = useExchangersStore((store) => store.setOrderBarOpen);
+  const setOrderBarIsOpen = useExchangersStore(
+    (store) => store.setOrderBarOpen
+  );
+  const setToastBarIsOpen = useExchangersStore((store) => store.setToastOpen);
+  const setOrderResponse = useExchangersStore(
+    (store) => store.setOrderResponse
+  );
 
   return useMutation({
     mutationFn: createOrder,
-    onSuccess: () => {
-      setIsOpen(false);
+    onSuccess: (data) => {
+      setOrderBarIsOpen(false);
+      console.log("Ответ от сервера:", data);
+      setOrderResponse(data);
+      setToastBarIsOpen(true);
     },
   });
 }

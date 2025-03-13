@@ -1,4 +1,4 @@
-import { ExchangersResponse, OrderPostData } from "@/types";
+import { ExchangersResponse, OrderPostData, OrderResponse } from "@/types";
 
 export async function getExchangers(
   currencyId: number,
@@ -12,13 +12,14 @@ export async function getExchangers(
   return exchangers;
 }
 
-export async function createOrder(data: OrderPostData): Promise<void> {
+export async function createOrder(
+  data: OrderPostData
+): Promise<OrderResponse | undefined> {
   const res = await fetch(`/api/order`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 
-  const result = await res.json();
-  console.log(result);
+  return await res.json();
 }
