@@ -16,6 +16,7 @@
   bottom: 0;
   right: 0;
   padding: 1.5rem;
+  overflow: auto;
   background-color: var(--black-color);
   z-index: 50;
   box-shadow: 0px 0 5px rgba(255, 255, 255, 0.1);

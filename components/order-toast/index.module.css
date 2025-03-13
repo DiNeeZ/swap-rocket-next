@@ -12,6 +12,7 @@
   width: 393px;
   min-height: 100dvh;
   position: fixed;
+  overflow: auto;
   top: 0;
   bottom: 0;
   right: 0;
