@@ -50,9 +50,11 @@ const Select = ({
     };
   }, [ref, setIsSelectOpen]);
 
+  const handleClose = () => setIsSelectOpen(false);
+
   const handleOptionClick = (option: Currency) => {
     onChange(option);
-    setIsSelectOpen(false);
+    handleClose();
   };
 
   if (!options) return <Spinner />;
@@ -73,16 +75,19 @@ const Select = ({
         <SelectArrow className={styles.arrow} />
       </div>
       {isSelectOpen && (
-        <>
-          <SelectDropdown
-            options={options}
-            handleOptionClick={handleOptionClick}
-          />
-          <SelectMobileDropdown
-            options={options}
-            handleOptionClick={handleOptionClick}
-          />
-        </>
+        <SelectDropdown
+          options={options}
+          handleOptionClick={handleOptionClick}
+        />
+      )}
+      {isSelectOpen && (
+        <SelectMobileDropdown
+          isOpen={isSelectOpen}
+          options={options}
+          handleOptionClick={handleOptionClick}
+          handleClose={handleClose}
+          value={value}
+        />
       )}
     </div>
   );
