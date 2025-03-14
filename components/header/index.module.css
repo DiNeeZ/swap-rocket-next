@@ -12,12 +12,13 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.1875rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
   padding: 0 0.5rem;
   border-radius: var(--border-r-sm);
   transition: opacity 0.15s ease-in;
+  color: var(--brand-accent-color);
 }
 
 .logo span {
@@ -33,17 +34,22 @@
   outline: 1px solid var(--brand-color);
 }
 
+.logoImg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 @media screen and (max-width: 576px) {
   .header {
     padding: 2.8rem 0 2rem;
   }
 
   .logo {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
   }
 
   .logoImg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
