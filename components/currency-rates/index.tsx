@@ -37,16 +37,12 @@ export default function CurrencyRates({
           </React.Fragment>
         ))}
       </div>
-      {!isAllVisible ? (
+      {!isAllVisible && (
         <button
           className={styles.button}
           onClick={() => setVisibleCount(currensyList.length)}
         >
           Курс всіх іноземних валют
-        </button>
-      ) : (
-        <button className={styles.button} onClick={() => setVisibleCount(5)}>
-          Згорнути
         </button>
       )}
     </div>
