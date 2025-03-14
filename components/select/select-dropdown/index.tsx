@@ -1,6 +1,6 @@
 import SimpleBar from "simplebar-react";
 import styles from "./index.module.css";
-import { Currency } from "@/data";
+import { Currency } from "@/types";
 
 type SelectDropdownProps = {
   options: Currency[] | null;
@@ -18,9 +18,12 @@ export function SelectDropdown({
           <li
             className={styles.option}
             key={option.id}
-            onClick={() => handleOptionClick(option)}
+            onClick={() => {
+              handleOptionClick(option);
+              console.log(option);
+            }}
           >
-            {option.name}
+            {option.currency_name}
           </li>
         ))}
       </ul>

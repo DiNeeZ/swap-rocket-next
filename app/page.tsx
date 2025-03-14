@@ -3,8 +3,13 @@ import { MainForm } from "@/components/main-form";
 import styles from "./page.module.css";
 import { dataSteps } from "@/data";
 import ExchangersResult from "@/components/exchangers-result";
+import { getCurrencyList } from "@/actions";
+import CurrencyRates from "@/components/currency-rates";
+import ExchangersList from "@/components/exchangers-list";
 
-export default function Home() {
+export default async function Home() {
+  const currencyList = await getCurrencyList();
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -20,7 +25,7 @@ export default function Home() {
               </p>
               <p className={styles.rate}>Оптовий курс від 500 $/€</p>
             </div>
-            <MainForm />
+            <MainForm currencyList={currencyList} />
           </div>
         </Container>
       </section>
@@ -42,6 +47,15 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+          </div>
+        </Container>
+      </section>
+
+      <section>
+        <Container>
+          <div className={styles.info}>
+            <CurrencyRates currensyList={currencyList} />
+            <ExchangersList />
           </div>
         </Container>
       </section>

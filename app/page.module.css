@@ -75,6 +75,15 @@
   padding: 2.5rem;
   border: 1px solid var(--border-brand-ghost);
   border-radius: 1rem;
+
+  /* Glassmorphism */
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.8px);
+  -webkit-backdrop-filter: blur(10.8px);
+  transition: background-color 0.15s ease-in-out;
+  z-index: 1;
 }
 
 .stepsNumber {
@@ -109,9 +118,20 @@
   line-height: 20px;
 }
 
-@media screen and (max-width: 1024px) {
+.info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  gap: 2.5rem;
+}
+
+@media screen and (max-width: 1060px) {
   .stepsList {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info {
+    gap: 1.5rem;
   }
 }
 
@@ -165,6 +185,10 @@
 
   .stepsContent {
     gap: 0;
+  }
+
+  .info {
+    grid-template-columns: 1fr;
   }
 }
 

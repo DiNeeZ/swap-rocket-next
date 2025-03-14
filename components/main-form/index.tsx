@@ -5,16 +5,15 @@ import { useEffect, useState } from "react";
 import Select from "@/components/select";
 import { Input } from "@/components/ui/input";
 import Button from "@/components/ui/button";
-import { type Currency } from "@/data";
+import type { Currency } from "@/types";
 import styles from "./index.module.css";
 import FormTabs from "./form-tabs";
 import { useExchangersStore } from "@/providers";
 import { useExchangers } from "@/hooks/useExchangers";
 
-export function MainForm() {
+export function MainForm({ currencyList }: { currencyList: Currency[] }) {
   const [mode, setMode] = useState<"buy" | "sell">("buy");
   const [number, setNumber] = useState<number | "">("");
-  const [currencyList, setCurrencyList] = useState<Currency[] | null>(null);
   const [currency, setCurrency] = useState<Currency | null>(null);
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
   const { setExchangers, setExchangerMode, setAmount, setIsLoading, setError } =
@@ -24,17 +23,6 @@ export function MainForm() {
     currency,
     number
   );
-
-  useEffect(() => {
-    const fetchCurrenncyList = async () => {
-      const response = await fetch("/api/currency");
-      const { objects } = await response.json();
-
-      setCurrencyList(objects as Currency[]);
-    };
-
-    fetchCurrenncyList();
-  }, []);
 
   useEffect(() => {
     setExchangers(data ?? undefined);

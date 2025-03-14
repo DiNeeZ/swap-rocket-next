@@ -18,6 +18,8 @@ export default function ExchangersResult() {
     return <div>Error: {error.message}</div>;
   }
 
+  console.log(data);
+
   return (
     <section className={styles.result}>
       <Container>

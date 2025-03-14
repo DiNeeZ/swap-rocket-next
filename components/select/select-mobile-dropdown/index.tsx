@@ -1,11 +1,11 @@
 import { Montserrat, Roboto } from "next/font/google";
 import { motion } from "framer-motion";
 import { BackChevron } from "@/components/ui/icons/back-chevron";
-import { Currency } from "@/data";
+import { Currency } from "@/types";
 import styles from "./index.module.css";
 
 type SelectMobileDropdownProps = {
-  options: Currency[] | null;
+  options: Currency[];
   value: Currency;
   isOpen: boolean;
   handleOptionClick: (option: Currency) => void;
@@ -47,7 +47,7 @@ export function SelectMobileDropdown({
       </div>
       <ul className={styles.list}>
         {options?.map((option) => {
-          const isCurrent = option.name === value.name;
+          const isCurrent = option.currency_name === value.currency_name;
 
           return (
             <li
@@ -60,7 +60,7 @@ export function SelectMobileDropdown({
               <span
                 className={`${styles.checkbox} ${isCurrent && styles.active}`}
               />
-              {option.name}
+              {option.currency_name}
             </li>
           );
         })}

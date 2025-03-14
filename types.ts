@@ -1,9 +1,17 @@
 export type Currency = {
-  string: {
-    buy: string;
-    sell: string;
-    sum: string;
-  };
+  address: string;
+  address_map: string;
+  buy: string;
+  code: string;
+  currency: string;
+  currency_name: string;
+  exchanger: string;
+  id: number;
+  resource_uri: string;
+  sell: string;
+  sum: number;
+  updatedAt: string;
+  working_hours: string;
 };
 
 export type Exchanger = {
@@ -31,6 +39,15 @@ export type ExchangersResponse = {
     total_count: number;
   };
   objects: Exchanger[];
+};
+export type ExchangersListItem = {
+  address: string;
+  address_map: string;
+  created_at: string;
+  id: number;
+  resource_uri: string;
+  updatedAt: string;
+  working_hours: string;
 };
 
 export type OrderData = {

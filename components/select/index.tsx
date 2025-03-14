@@ -4,14 +4,14 @@ import { Montserrat } from "next/font/google";
 import { SelectDropdown } from "./select-dropdown";
 import { Spinner } from "../ui/spinner";
 import { SelectArrow } from "../ui/icons";
-import type { Currency } from "@/data";
+import type { Currency } from "@/types";
 
 import "simplebar-react/dist/simplebar.min.css";
 import styles from "./index.module.css";
 import { SelectMobileDropdown } from "./select-mobile-dropdown";
 
 type SelectProps = {
-  options: Currency[] | null;
+  options: Currency[];
   value: Currency | null;
   onChange: (currency: Currency) => void;
   isSelectOpen: boolean;
@@ -57,7 +57,7 @@ const Select = ({
     handleClose();
   };
 
-  if (!options) return <Spinner />;
+  // if (!options) return <Spinner />;
   if (!value) return <Spinner />;
 
   return (
@@ -71,7 +71,7 @@ const Select = ({
         className={styles.header}
         onClick={() => setIsSelectOpen(!isSelectOpen)}
       >
-        <span className={styles.current}>{value.name}</span>
+        <span className={styles.current}>{value.currency_name}</span>
         <SelectArrow className={styles.arrow} />
       </div>
       {isSelectOpen && (

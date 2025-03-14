@@ -8,6 +8,7 @@ import "@/styles/normalize.css";
 import "@/styles/globals.css";
 import { OrderBar } from "@/components/order-bar";
 import OrderToast from "@/components/order-toast";
+import PageDecor from "@/components/page-decor";
 
 const eUkraine = localFont({
   src: [
@@ -69,6 +70,7 @@ export default function RootLayout({
             <OrderToast />
           </ExchangersStoreProvider>
         </QueryProvider>
+        <PageDecor />
       </body>
     </html>
   );
