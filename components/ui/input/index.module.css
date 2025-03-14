@@ -8,6 +8,10 @@
   border-radius: var(--border-r-md);
 }
 
+.input::placeholder {
+  font-size: 1.5rem;
+}
+
 .input:focus {
   outline: 1px solid var(--text-color);
 }

@@ -108,7 +108,7 @@ export function MainForm() {
           pattern="[0-9]*"
           value={number}
           onChange={handleChange}
-          placeholder="500"
+          placeholder="Введіть суму"
         />
         <Button disabled={isLoading}>Знайти де обміняти</Button>
       </div>
