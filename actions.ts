@@ -1,6 +1,6 @@
 "use server";
 
-import type { Currency, ExchangersListItem } from "./types";
+import type { Currency, ExchangersListItem } from "@/types";
 
 export async function getCurrencyList(): Promise<Currency[]> {
   try {
