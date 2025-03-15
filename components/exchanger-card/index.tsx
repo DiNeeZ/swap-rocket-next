@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Location } from "@/components/ui/icons";
-import type { Exchanger, OrderData } from "@/types";
-import styles from "./index.module.css";
 import { useExchangersStore } from "@/providers";
+import type { Exchanger, OrderData } from "@/types";
+
+import styles from "./index.module.css";
 
 type ExchangerCardProps = {
   exchanger: Exchanger;

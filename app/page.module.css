@@ -165,9 +165,10 @@
   }
 
   .stepsList {
-    align-self: center;
-    max-width: 368px;
+    width: 100%;
+    max-width: 30rem;
     grid-template-columns: 1fr;
+    align-self: center;
   }
 
   .stepsItem {

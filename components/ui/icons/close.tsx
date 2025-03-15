@@ -1,4 +1,6 @@
-export function Close({ ...otherProps }: React.SVGProps<SVGSVGElement>) {
+export default function Close({
+  ...otherProps
+}: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="32"

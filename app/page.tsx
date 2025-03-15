@@ -1,9 +1,11 @@
 import { Container } from "@/components/ui/container";
 import { MainForm } from "@/components/main-form";
-import { dataSteps } from "@/data";
 import ExchangersResult from "@/components/exchangers-result";
 import CurrencyRates from "@/components/currency-rates";
 import ExchangersList from "@/components/exchangers-list";
+
+import { dataSteps } from "@/data";
+
 import styles from "./page.module.css";
 
 export default async function Home() {

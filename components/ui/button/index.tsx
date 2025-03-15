@@ -6,7 +6,7 @@ type ButtonProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.PropsWithChildren;
 
-export default function Button({
+export function Button({
   children,
   variant = "default",
   size = "default",

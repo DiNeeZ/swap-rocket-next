@@ -1,4 +1,6 @@
-export function BackArrow({ ...otherProps }: React.SVGProps<SVGSVGElement>) {
+export default function BackArrow({
+  ...otherProps
+}: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="30"

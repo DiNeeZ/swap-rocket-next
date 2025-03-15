@@ -15,7 +15,7 @@
   top: 0;
   bottom: 0;
   right: 0;
-  padding: 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   overflow: auto;
   background-color: var(--black-color);
   z-index: 50;
@@ -24,8 +24,8 @@
 
 .backButton {
   display: flex;
-  padding: 0;
-  margin-bottom: 1rem;
+  margin-left: -1.5rem;
+  padding: 1.5rem;
   border-radius: 50%;
   outline: none;
   background: none;
@@ -35,13 +35,9 @@
   transition: opacity 0.15s ease-in-out;
 }
 
-.backButton:hover {
-  opacity: 0.8;
-}
-
+.backButton:hover,
 .backButton:focus {
-  outline: 1px solid var(--brand-color);
-  outline-offset: 1px;
+  opacity: 0.8;
 }
 
 .title {

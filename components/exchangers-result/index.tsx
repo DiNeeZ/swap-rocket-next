@@ -1,10 +1,11 @@
 "use client";
 
-import { Container } from "../ui/container";
-import styles from "./index.module.css";
-import { ExchangerCard } from "../exchanger-card";
+import { Container } from "@/components/ui/container";
+import { ExchangerCard } from "@/components/exchanger-card";
+import { Spinner } from "@/components/ui/spinner";
 import { useExchangersStore } from "@/providers";
-import { Spinner } from "../ui/spinner";
+
+import styles from "./index.module.css";
 
 export default function ExchangersResult() {
   const { data, exchangerMode, isLoading, error } = useExchangersStore(

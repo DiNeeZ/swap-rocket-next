@@ -3,8 +3,7 @@
   position: fixed;
   inset: 0;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 4rem 1.5rem;
+  padding: 1.5rem;
   background-color: #1a1a1a;
   border-top-left-radius: 10px;
   overflow: auto;
@@ -15,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
 }
 
 .btn {

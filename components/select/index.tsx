@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { Montserrat } from "next/font/google";
 
-import { SelectDropdown } from "./select-dropdown";
-import { Spinner } from "../ui/spinner";
-import { SelectArrow } from "../ui/icons";
+import { SelectDropdown } from "@/components/select/select-dropdown";
+import { SelectMobileDropdown } from "@/components/select/select-mobile-dropdown";
+import { Spinner } from "@/components/ui/spinner";
+import { SelectArrow } from "@/components/ui/icons";
 import type { Currency } from "@/types";
 
 import "simplebar-react/dist/simplebar.min.css";
 import styles from "./index.module.css";
-import { SelectMobileDropdown } from "./select-mobile-dropdown";
 
 type SelectProps = {
-  options: Currency[] | undefined;
+  options: Currency[] | null;
   value: Currency | null;
   onChange: (currency: Currency) => void;
   isSelectOpen: boolean;

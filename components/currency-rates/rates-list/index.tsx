@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import { useExchangersStore } from "@/providers";
+
 import styles from "./index.module.css";
 
 export function RatesList() {

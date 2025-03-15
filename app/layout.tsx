@@ -1,15 +1,18 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import { QueryProvider, ExchangersStoreProvider } from "@/providers";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import "@/styles/normalize.css";
-import "@/styles/globals.css";
 import { OrderBar } from "@/components/order-bar";
 import OrderToast from "@/components/order-toast";
 import PageDecor from "@/components/page-decor";
+
+import { QueryProvider, ExchangersStoreProvider } from "@/providers";
 import { RatesProvider } from "@/providers/rates-provider";
+
+import type { Metadata } from "next";
+
+import "@/styles/normalize.css";
+import "@/styles/globals.css";
 
 const eUkraine = localFont({
   src: [

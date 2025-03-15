@@ -1,6 +1,8 @@
 import Link from "next/link";
+
 import { Location } from "@/components/ui/icons";
 import { getExchangersList } from "@/actions";
+
 import styles from "./index.module.css";
 
 export default async function ExchangersList() {

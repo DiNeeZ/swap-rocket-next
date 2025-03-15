@@ -1,16 +1,18 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { Roboto } from "next/font/google";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { Close } from "@/components/ui/icons";
+import { Location } from "@/components/ui/icons";
+import { Hours } from "@/components/hours";
 
 import { useExchangersStore } from "@/providers";
-import styles from "./index.module.css";
-import { Close } from "@/components/ui/icons/close";
-import Link from "next/link";
-import { Location } from "../ui/icons";
-import { Hours } from "../hours";
 import { isNowInTimeRange } from "@/utils";
 import { useDisableBodyScroll } from "@/hooks/useDisableBodyScroll";
+
+import styles from "./index.module.css";
 
 const sidebarVariants = {
   hidden: { x: "100%" },
@@ -60,11 +62,10 @@ export default function OrderToast() {
             transition={{ type: "tween", duration: 0.3 }}
             className={styles.sidebar}
           >
+            <button onClick={handleClose} className={styles.close}>
+              <Close />
+            </button>
             <div className={styles.content}>
-              <button onClick={handleClose} className={styles.close}>
-                <Close />
-              </button>
-
               <h2 className={`${styles.title} ${roboto.className}`}>
                 Дякуємо!
                 <br />

@@ -4,9 +4,9 @@ import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { BackArrow } from "@/components/ui/icons/back-arrow";
+import { BackArrow } from "@/components/ui/icons";
 import { Location } from "@/components/ui/icons";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { PhoneInput } from "@/components/phone-input";
 import { Hours } from "@/components/hours";
 

@@ -5,7 +5,7 @@ type FormTabsProps = {
   setMode: (mode: "buy" | "sell") => void;
 };
 
-export default function FormTabs({ mode, setMode }: FormTabsProps) {
+export function FormTabs({ mode, setMode }: FormTabsProps) {
   const buyBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (mode !== "buy") {

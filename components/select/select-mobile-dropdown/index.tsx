@@ -1,7 +1,8 @@
 import { Montserrat, Roboto } from "next/font/google";
 import { motion } from "framer-motion";
-import { BackChevron } from "@/components/ui/icons/back-chevron";
+import { BackChevron } from "@/components/ui/icons";
 import { Currency } from "@/types";
+
 import styles from "./index.module.css";
 
 type SelectMobileDropdownProps = {
@@ -37,7 +38,7 @@ export function SelectMobileDropdown({
       transition={{ type: "tween", duration: 0.3 }}
       className={styles.options}
     >
-      <div className={styles.header}>
+      <div onClick={handleClose} className={styles.header}>
         <button onClick={handleClose} className={styles.btn}>
           <BackChevron />
         </button>

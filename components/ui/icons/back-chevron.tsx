@@ -1,4 +1,6 @@
-export function BackChevron({ ...otherProps }: React.SVGProps<SVGSVGElement>) {
+export default function BackChevron({
+  ...otherProps
+}: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="12"

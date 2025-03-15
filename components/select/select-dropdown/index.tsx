@@ -1,6 +1,6 @@
 import SimpleBar from "simplebar-react";
-import styles from "./index.module.css";
 import { Currency } from "@/types";
+import styles from "./index.module.css";
 
 type SelectDropdownProps = {
   options: Currency[] | null;

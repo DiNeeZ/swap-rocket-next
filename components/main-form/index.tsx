@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 
 import Select from "@/components/select";
 import { Input } from "@/components/ui/input";
-import Button from "@/components/ui/button";
-import type { Currency } from "@/types";
-import styles from "./index.module.css";
-import FormTabs from "./form-tabs";
+import { Button } from "@/components/ui/button";
+import { FormTabs } from "@/components/main-form/form-tabs";
+
 import { useExchangersStore } from "@/providers";
 import { useExchangers } from "@/hooks/useExchangers";
+import type { Currency } from "@/types";
+
+import styles from "./index.module.css";
 
 export function MainForm() {
   const [mode, setMode] = useState<"buy" | "sell">("buy");
