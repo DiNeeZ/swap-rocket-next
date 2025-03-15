@@ -11,9 +11,11 @@ import { PhoneInput } from "@/components/phone-input";
 import { Hours } from "@/components/hours";
 
 import { useCreateOrder } from "@/hooks/useCreateOrder";
+import { useDisableBodyScroll } from "@/hooks/useDisableBodyScroll";
 import { useExchangersStore } from "@/providers";
 import { isNowInTimeRange } from "@/utils";
 import { OrderData } from "@/types";
+
 import styles from "./index.module.css";
 
 const MODE_DICTIONARY = {
@@ -34,6 +36,8 @@ export function OrderBar() {
   const orderData = useExchangersStore((store) => store.orderData);
   const isOpen = useExchangersStore((store) => store.isOrderBarOpen);
   const setIsOpen = useExchangersStore((store) => store.setOrderBarOpen);
+
+  useDisableBodyScroll(isOpen);
 
   const handleClose = () => setIsOpen(false);
 

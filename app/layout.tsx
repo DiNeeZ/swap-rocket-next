@@ -9,6 +9,7 @@ import "@/styles/globals.css";
 import { OrderBar } from "@/components/order-bar";
 import OrderToast from "@/components/order-toast";
 import PageDecor from "@/components/page-decor";
+import { RatesProvider } from "@/providers/rates-provider";
 
 const eUkraine = localFont({
   src: [
@@ -63,11 +64,13 @@ export default function RootLayout({
       <body className={`${eUkraine.className}`}>
         <QueryProvider>
           <ExchangersStoreProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <OrderBar />
-            <OrderToast />
+            <RatesProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <OrderBar />
+              <OrderToast />
+            </RatesProvider>
           </ExchangersStoreProvider>
         </QueryProvider>
         <PageDecor />

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Location } from "../ui/icons";
 import { Hours } from "../hours";
 import { isNowInTimeRange } from "@/utils";
+import { useDisableBodyScroll } from "@/hooks/useDisableBodyScroll";
 
 const sidebarVariants = {
   hidden: { x: "100%" },
@@ -27,6 +28,8 @@ export default function OrderToast() {
   const setToastOpen = useExchangersStore((store) => store.setToastOpen);
   const responseData = useExchangersStore((store) => store.orderResponse);
   const orderData = useExchangersStore((store) => store.orderData);
+
+  useDisableBodyScroll(isToastOpen);
 
   const handleClose = () => {
     setToastOpen(false);

@@ -11,13 +11,19 @@ import FormTabs from "./form-tabs";
 import { useExchangersStore } from "@/providers";
 import { useExchangers } from "@/hooks/useExchangers";
 
-export function MainForm({ currencyList }: { currencyList: Currency[] }) {
+export function MainForm() {
   const [mode, setMode] = useState<"buy" | "sell">("buy");
   const [number, setNumber] = useState<number | "">("");
   const [currency, setCurrency] = useState<Currency | null>(null);
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
-  const { setExchangers, setExchangerMode, setAmount, setIsLoading, setError } =
-    useExchangersStore((state) => state);
+  const {
+    currencyList,
+    setExchangers,
+    setExchangerMode,
+    setAmount,
+    setIsLoading,
+    setError,
+  } = useExchangersStore((state) => state);
 
   const { data, refetch, isLoading, isFetching, error } = useExchangers(
     currency,

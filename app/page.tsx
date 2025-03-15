@@ -1,15 +1,12 @@
 import { Container } from "@/components/ui/container";
 import { MainForm } from "@/components/main-form";
-import styles from "./page.module.css";
 import { dataSteps } from "@/data";
 import ExchangersResult from "@/components/exchangers-result";
-import { getCurrencyList } from "@/actions";
 import CurrencyRates from "@/components/currency-rates";
 import ExchangersList from "@/components/exchangers-list";
+import styles from "./page.module.css";
 
 export default async function Home() {
-  const currencyList = await getCurrencyList();
-
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -25,7 +22,7 @@ export default async function Home() {
               </p>
               <p className={styles.rate}>Оптовий курс від 500 $/€</p>
             </div>
-            <MainForm currencyList={currencyList} />
+            <MainForm />
           </div>
         </Container>
       </section>
@@ -54,7 +51,7 @@ export default async function Home() {
       <section>
         <Container>
           <div className={styles.info}>
-            <CurrencyRates currensyList={currencyList} />
+            <CurrencyRates />
             <ExchangersList />
           </div>
         </Container>

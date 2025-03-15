@@ -83,7 +83,6 @@
   backdrop-filter: blur(10.8px);
   -webkit-backdrop-filter: blur(10.8px);
   transition: background-color 0.15s ease-in-out;
-  z-index: 1;
 }
 
 .stepsNumber {

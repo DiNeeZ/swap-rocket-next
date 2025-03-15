@@ -11,7 +11,7 @@ import styles from "./index.module.css";
 import { SelectMobileDropdown } from "./select-mobile-dropdown";
 
 type SelectProps = {
-  options: Currency[];
+  options: Currency[] | undefined;
   value: Currency | null;
   onChange: (currency: Currency) => void;
   isSelectOpen: boolean;
@@ -57,7 +57,7 @@ const Select = ({
     handleClose();
   };
 
-  // if (!options) return <Spinner />;
+  if (!options) return <Spinner />;
   if (!value) return <Spinner />;
 
   return (
