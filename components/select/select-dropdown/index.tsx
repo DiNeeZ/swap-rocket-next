@@ -20,7 +20,6 @@ export function SelectDropdown({
             key={option.id}
             onClick={() => {
               handleOptionClick(option);
-              console.log(option);
             }}
           >
             {option.currency_name}
