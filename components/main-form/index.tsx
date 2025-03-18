@@ -27,6 +27,8 @@ export function MainForm() {
     setError,
   } = useExchangersStore((state) => state);
 
+  console.log(currencyList);
+
   const { data, refetch, isLoading, isFetching, error } = useExchangers(
     currency,
     number
