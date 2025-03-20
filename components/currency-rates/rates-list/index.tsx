@@ -1,22 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Spinner } from "@/components/ui/spinner";
-import { useExchangersStore } from "@/providers";
 
 import styles from "./index.module.css";
+import { Rates } from "@/types";
 
-export function RatesList() {
-  const currencyList = useExchangersStore((state) => state.currencyList);
+export function RatesList({ rates }: { rates: Rates[] }) {
   const [visibleCount, setVisibleCount] = useState(5);
-  const isAllVisible = currencyList && visibleCount >= currencyList.length;
-
-  if (!currencyList)
-    return (
-      <div className={styles.loader}>
-        <Spinner variant="accent" />
-      </div>
-    );
+  const isAllVisible = rates && visibleCount >= rates.length;
 
   return (
     <>
@@ -25,7 +16,7 @@ export function RatesList() {
         <span className={`${styles.cell} ${styles.header}`}>Купівля</span>
         <span className={`${styles.cell} ${styles.header}`}>Продаж</span>
 
-        {currencyList.slice(0, visibleCount).map((currency) => (
+        {rates.slice(0, visibleCount).map((currency) => (
           <React.Fragment key={currency.id}>
             <span className={`${styles.cell} ${styles.tableCell}`}>
               {currency.code.toLocaleUpperCase()}
@@ -42,7 +33,7 @@ export function RatesList() {
       {!isAllVisible && (
         <button
           className={styles.button}
-          onClick={() => setVisibleCount(currencyList.length)}
+          onClick={() => setVisibleCount(rates.length)}
         >
           Курс всіх іноземних валют
         </button>

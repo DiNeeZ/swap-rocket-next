@@ -48,7 +48,7 @@ export function SelectMobileDropdown({
       </div>
       <ul className={styles.list}>
         {options?.map((option) => {
-          const isCurrent = option.currency_name === value.currency_name;
+          const isCurrent = option.name === value.name;
 
           return (
             <li
@@ -61,7 +61,7 @@ export function SelectMobileDropdown({
               <span
                 className={`${styles.checkbox} ${isCurrent && styles.active}`}
               />
-              {option.currency_name}
+              {option.name}
             </li>
           );
         })}

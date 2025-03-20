@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { Currency } from "@/types";
-import { getUniqueByCode } from "@/utils";
 import { useExchangersStore } from "./exchangers-store-provider";
 
 export function RatesProvider({ children }: { children: React.ReactNode }) {
@@ -10,10 +9,9 @@ export function RatesProvider({ children }: { children: React.ReactNode }) {
 
   const updateCurrencyList = async () => {
     try {
-      const response = await fetch("/api/currency-list");
-      const newData = (await response.json()) as Currency[];
-      const uniqueData = getUniqueByCode(newData);
-      setCurrencyList(uniqueData);
+      const response = await fetch("/api/currency");
+      const { objects } = await response.json();
+      setCurrencyList(objects as Currency[]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

@@ -22,7 +22,7 @@ export function SelectDropdown({
               handleOptionClick(option);
             }}
           >
-            {option.currency_name}
+            {option.name}
           </li>
         ))}
       </ul>

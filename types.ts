@@ -1,4 +1,11 @@
 export type Currency = {
+  code: string;
+  id: 11;
+  name: string;
+  resource_uri: string;
+};
+
+export type Rates = {
   address: string;
   address_map: string;
   buy: string;

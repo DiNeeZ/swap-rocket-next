@@ -71,7 +71,7 @@ const Select = ({
         className={styles.header}
         onClick={() => setIsSelectOpen(!isSelectOpen)}
       >
-        <span className={styles.current}>{value.currency_name}</span>
+        <span className={styles.current}>{value.name}</span>
         <SelectArrow className={styles.arrow} />
       </div>
       {isSelectOpen && (
