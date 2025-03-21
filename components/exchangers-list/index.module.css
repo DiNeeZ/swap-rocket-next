@@ -72,11 +72,17 @@
 .address {
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.4;
 }
 
 .hours {
   font-size: 18px;
   font-weight: 400;
   color: var(--text-light-color);
+}
+
+@media screen and (max-width: 576px) {
+  .address {
+    font-size: 1.25rem;
+  }
 }

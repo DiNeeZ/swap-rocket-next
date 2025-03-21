@@ -4,6 +4,7 @@ export async function getExchangers(
   currencyId: number,
   sum: number
 ): Promise<ExchangersResponse> {
+  console.log(currencyId, sum);
   const response = await fetch(
     `/api/exchangers?currencyId=${currencyId}&sum=${sum}`
   );
