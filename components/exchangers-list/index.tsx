@@ -1,12 +1,19 @@
 import Link from "next/link";
 
 import { Location } from "@/components/ui/icons";
-import { getExchangersList } from "@/actions";
 
 import styles from "./index.module.css";
+import { ExchangersListItem } from "@/types";
 
 export default async function ExchangersList() {
-  const exchangers = await getExchangersList();
+  const exchangersResponse = await fetch(
+    `${process.env.NEXT_API_URL}/exchangers/`,
+    {
+      cache: "no-store",
+    }
+  );
+  const { objects: exchangers }: { objects: ExchangersListItem[] } =
+    await exchangersResponse.json();
 
   return (
     <div className={styles.exchangers}>
