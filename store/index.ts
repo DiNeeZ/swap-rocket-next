@@ -1,16 +1,11 @@
-import {
-  Currency,
-  ExchangersResponse,
-  OrderData,
-  OrderResponse,
-} from "@/types";
+import { ExchangersResponse, OrderData, OrderResponse, Rates } from "@/types";
 import { createStore } from "zustand/vanilla";
 
 export type ExchangersState = {
   data: ExchangersResponse | undefined;
   orderData: OrderData | undefined;
   orderResponse: OrderResponse | undefined;
-  currencyList: Currency[] | null;
+  ratesList: Rates[] | null;
   isOrderBarOpen: boolean;
   isOrderToastOpen: boolean;
   exchangerMode: "buy" | "sell";
@@ -23,7 +18,7 @@ export type ExchangersActions = {
   setExchangers: (data: ExchangersResponse | undefined) => void;
   setOrderData: (orderData: OrderData | undefined) => void;
   setOrderResponse: (orderResponse: OrderResponse | undefined) => void;
-  setCurrencyList: (currencyList: Currency[]) => void;
+  setRatesList: (ratesList: Rates[]) => void;
   setOrderBarOpen: (isOpen: boolean) => void;
   setToastOpen: (isOpen: boolean) => void;
   setExchangerMode: (mode: "buy" | "sell") => void;
@@ -38,7 +33,7 @@ export const defaultInitState: ExchangersState = {
   data: undefined,
   orderData: undefined,
   orderResponse: undefined,
-  currencyList: null,
+  ratesList: null,
   isOrderBarOpen: false,
   isOrderToastOpen: false,
   exchangerMode: "buy",
@@ -54,7 +49,7 @@ export const createExchangersStore = (
     ...initState,
     setExchangers: (data) => set({ data }),
     setOrderData: (orderData) => set({ orderData }),
-    setCurrencyList: (currencyList) => set({ currencyList }),
+    setRatesList: (ratesList) => set({ ratesList }),
     setOrderBarOpen: (isOrderBarOpen) => set({ isOrderBarOpen }),
     setOrderResponse: (orderResponse) => set({ orderResponse }),
     setToastOpen: (isOrderToastOpen) => set({ isOrderToastOpen }),

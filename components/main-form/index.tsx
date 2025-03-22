@@ -16,21 +16,28 @@ import styles from "./index.module.css";
 export function MainForm() {
   const [mode, setMode] = useState<"buy" | "sell">("buy");
   const [number, setNumber] = useState<number | "">("");
+  const [currencyList, setCurrencyList] = useState<Currency[] | null>(null);
   const [currency, setCurrency] = useState<Currency | null>(null);
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
-  const {
-    currencyList,
-    setExchangers,
-    setExchangerMode,
-    setAmount,
-    setIsLoading,
-    setError,
-  } = useExchangersStore((state) => state);
+  const { setExchangers, setExchangerMode, setAmount, setIsLoading, setError } =
+    useExchangersStore((state) => state);
 
   const { data, refetch, isLoading, isFetching, error } = useExchangers(
     currency,
     number
   );
+
+  useEffect(() => {
+    const fetchCurrencyList = async () => {
+      const response = await fetch("/api/currency");
+      const { objects } = await response.json();
+      setCurrencyList(objects);
+      if (objects.length > 0) {
+        setCurrency(objects[0]);
+      }
+    };
+    fetchCurrencyList();
+  }, []);
 
   useEffect(() => {
     setExchangers(data ?? undefined);
@@ -52,9 +59,9 @@ export function MainForm() {
     setError,
   ]);
 
-  useEffect(() => {
-    if (currencyList) setCurrency(currencyList[0]);
-  }, [currencyList]);
+  // useEffect(() => {
+  //   if (currencyList) setCurrency(currencyList[0]);
+  // }, [currencyList]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = event.target.value;

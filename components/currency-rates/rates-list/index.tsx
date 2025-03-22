@@ -3,10 +3,30 @@
 import React, { useState } from "react";
 
 import styles from "./index.module.css";
-import { Rates } from "@/types";
+import { useExchangersStore } from "@/providers";
+import { Spinner } from "@/components/ui/spinner";
 
-export function RatesList({ rates }: { rates: Rates[] }) {
+function getUniqueByCode<T extends { code: string }>(array: T[]): T[] {
+  return Array.from(new Map(array.map((item) => [item.code, item])).values());
+}
+
+function sortUrls<T extends { currency: string }>(arr: T[]) {
+  return arr.sort((a, b) => {
+    const numA = parseInt(a.currency.split("/")[4]);
+    const numB = parseInt(b.currency.split("/")[4]);
+    return numA - numB;
+  });
+}
+
+export function RatesList() {
   const [visibleCount, setVisibleCount] = useState(5);
+  const ratesList = useExchangersStore((store) => store.ratesList);
+
+  if (!ratesList) {
+    return <Spinner variant="accent" />;
+  }
+
+  const rates = sortUrls(getUniqueByCode(ratesList));
   const isAllVisible = rates && visibleCount >= rates.length;
 
   return (

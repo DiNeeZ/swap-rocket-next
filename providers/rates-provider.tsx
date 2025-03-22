@@ -1,17 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import { Currency } from "@/types";
+import { Rates } from "@/types";
 import { useExchangersStore } from "./exchangers-store-provider";
 
 export function RatesProvider({ children }: { children: React.ReactNode }) {
-  const setCurrencyList = useExchangersStore((state) => state.setCurrencyList);
+  const setCurrencyList = useExchangersStore((state) => state.setRatesList);
 
   const updateCurrencyList = async () => {
     try {
-      const response = await fetch("/api/currency");
-      const { objects } = await response.json();
-      setCurrencyList(objects as Currency[]);
+      const response = await fetch("/api/rates");
+      const data = await response.json();
+      setCurrencyList(data as Rates[]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

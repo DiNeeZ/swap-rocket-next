@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Script from "next/script";
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -64,6 +65,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Tag Manager */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-STJ7PH7DVD"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-STJ7PH7DVD');
+            `,
+          }}
+        />
+      </head>
       <body className={`${eUkraine.className}`}>
         <QueryProvider>
           <ExchangersStoreProvider>
