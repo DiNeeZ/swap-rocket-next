@@ -5,7 +5,7 @@ import type { ExchangersListItem } from "@/types";
 export async function getExchangersList(): Promise<ExchangersListItem[]> {
   try {
     const res = await fetch(`${process.env.NEXT_API_URL}/exchangers/`, {
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     const { objects: exchangers }: { objects: ExchangersListItem[] } =
