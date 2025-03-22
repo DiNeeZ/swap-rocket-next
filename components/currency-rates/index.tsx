@@ -1,3 +1,5 @@
+// export const dynamic = "force-dynamic";
+
 import { RatesList } from "./rates-list";
 
 import styles from "./index.module.css";
@@ -19,9 +21,11 @@ export default async function CurrencyRates() {
   const rates = getUniqueByCode(await getCurrencyRaqtes());
   const sortedRates = sortUrls(rates);
 
-  const today = new Date(
-    sortedRates.find((rate) => rate.code === "usd")?.updatedAt ?? ""
-  ).toLocaleDateString("ru-RU");
+  // const today = new Date(
+  //   sortedRates.find((rate) => rate.code === "usd")?.updatedAt ?? ""
+  // ).toLocaleDateString("ru-RU");
+
+  const today = `${new Date().getMinutes()} ${new Date().getSeconds()}`;
 
   return (
     <div className={styles.rates}>
