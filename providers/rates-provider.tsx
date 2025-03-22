@@ -5,23 +5,23 @@ import { Rates } from "@/types";
 import { useExchangersStore } from "./exchangers-store-provider";
 
 export function RatesProvider({ children }: { children: React.ReactNode }) {
-  const setCurrencyList = useExchangersStore((state) => state.setRatesList);
+  const setRatesList = useExchangersStore((state) => state.setRatesList);
 
-  const updateCurrencyList = async () => {
+  const updateRatesList = async () => {
     try {
       const response = await fetch("/api/rates");
       const data = await response.json();
-      setCurrencyList(data as Rates[]);
+      setRatesList(data as Rates[]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    updateCurrencyList();
+    updateRatesList();
 
     const interval = setInterval(() => {
-      updateCurrencyList();
+      updateRatesList();
     }, 300000);
     return () => clearInterval(interval);
   });
