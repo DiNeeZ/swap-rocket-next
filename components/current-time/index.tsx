@@ -1,4 +1,4 @@
-import React from "react";
+"use clinet";
 
 export default function CurrentTime() {
   return <>{new Date().toLocaleDateString("ru-RU")}</>;
