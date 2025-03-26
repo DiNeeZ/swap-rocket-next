@@ -3,6 +3,8 @@ import Script from "next/script";
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Contacts } from "@/components/contacts";
+import { Services } from "@/components/services";
 import { OrderBar } from "@/components/order-bar";
 import OrderToast from "@/components/order-toast";
 import PageDecor from "@/components/page-decor";
@@ -36,25 +38,26 @@ const eUkraine = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Private Exchangers - Просто і вигідно обміняти валюту",
+  title: "Курс долара в Одесі сьогодні – актуальні обмінники та найкращий курс валют",
   description:
-    "Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.",
-  metadataBase: new URL("https://swap-rocket-next.vercel.app/"),
+    "Шукаєте, де вигідно обміняти валюту в Одесі? Актуальний курс долара, євро та інших валют у наших обмінних пунктах. Оновлення щодня!",
+  metadataBase: new URL("https://www.exprivat.com.ua/"),
+  keywords:"курс долара Одеса, обмін валют Одеса, актуальний курс обміну, обмінники Одеса, курс євро до гривні",
 
   openGraph: {
     locale: "ua_UA",
-    title: "Private Exchangers | Просто і вигідно обміняти валюту",
+    title: "Просто і вигідно обміняти валюту",
     description:
-      "Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.",
+      "Шукаєте, де вигідно обміняти валюту в Одесі? Актуальний курс долара, євро та інших валют у наших обмінних пунктах. Оновлення щодня!",
     type: "website",
-    url: "https://swap-rocket-next.vercel.app/",
+    url: "https://www.exprivat.com.ua/",
     images: {
       url: "/banner_og.png",
       width: "512px",
       height: "512px",
-      alt: "Сайт із пошуку обмінних пунктів поруч із вами та можливість забронювати потрібну суму.",
+      alt: "Найкращий курс валют в Одесі сьогодні",
     },
-    siteName: "swap-rocket-next",
+    siteName: "exprivat.com.ua",
   },
 };
 
@@ -90,6 +93,8 @@ export default function RootLayout({
             <RatesProvider>
               <Header />
               <main>{children}</main>
+              <Services />
+              <Contacts />
               <Footer />
               <OrderBar />
               <OrderToast />
