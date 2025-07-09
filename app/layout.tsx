@@ -1,10 +1,10 @@
 import localFont from "next/font/local";
 import Script from "next/script";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { Contacts } from "@/components/contacts";
-import { Services } from "@/components/services";
+import { Footer } from "@/components/footer";
+
 import { OrderBar } from "@/components/order-bar";
 import OrderToast from "@/components/order-toast";
 import PageDecor from "@/components/page-decor";
@@ -12,10 +12,11 @@ import PageDecor from "@/components/page-decor";
 import { QueryProvider, ExchangersStoreProvider } from "@/providers";
 import { RatesProvider } from "@/providers/rates-provider";
 
-import type { Metadata } from "next";
 
 import "@/styles/normalize.css";
 import "@/styles/globals.css";
+
+
 
 const eUkraine = localFont({
   src: [
@@ -69,11 +70,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-STJ7PH7DVD"
-        />
         <Script
           id="google-analytics"
           strategy="afterInteractive"
@@ -86,6 +82,8 @@ export default function RootLayout({
             `,
           }}
         />
+        <meta name="apple-mobile-web-app-title" content="exprivat" />
+
       </head>
       <body className={`${eUkraine.className}`}>
         <QueryProvider>
@@ -93,7 +91,6 @@ export default function RootLayout({
             <RatesProvider>
               <Header />
               <main>{children}</main>
-              <Services />
               <Contacts />
               <Footer />
               <OrderBar />

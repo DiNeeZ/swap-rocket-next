@@ -10,13 +10,88 @@ import styles from "./page.module.css";
 
 
 export const metadata: Metadata = {
-  title: "Курс валют в обменниках EXPRIVAT – доллар и евро сегодня",
+  title: "Обмін валют Одеса — Кращий курс USD, EUR готівкою | EXPRIVAT",
   description:
-    "Актуальный курс доллара и евро в обменниках Одессы. Сравните курс доллара к гривне, курс евро к гривне и выберите лучший обменник в Одессе.",
-  metadataBase: new URL("https://www.exprivat.com.ua/"),
+    "Вигідний курс валют в обмінниках Одеси. USD, EUR, PLN, GBP. Без комісій. Точний курс сьогодні — оновлюється щодня.",
+  metadataBase: new URL("https://www.exprivat.com.ua"),
   keywords:"курс доллара в обменниках, курс валюты одесса, курс евро к гривне в обменниках, обменник одесса, доллар в грн в обменниках",
+
+  openGraph: {
+    locale: "ua_UA",
+    title: "Обмін валют Одеса — Кращий курс USD, EUR готівкою | EXPRIVAT",
+    description:
+      "Вигідний курс валют в обмінниках Одеси. USD, EUR, PLN, GBP. Без комісій. Точний курс сьогодні — оновлюється щодня.",
+    type: "website",
+    url: "https://www.exprivat.com.ua/kurs",
+    images: {
+      url: "kurs.png",
+      width: "512px",
+      height: "352px",
+      alt: "Курс валют в Одесі сьогодні",
+    },
+    siteName: "exprivat.com.ua",
+  },
 };
 
+// const jsonLd = {
+//   "@context": "https://schema.org",
+//   "@type": "WebPage",
+//   "name": "Курс валют в Одесе",
+//   "description": "Курс обмена валют в Одесе",
+//   "mainEntity": {
+//       "@type": "ItemList",
+//       "itemListElement": [
+//             {
+//               "@type": "ExchangeRateSpecification",
+//               "currency": "USD",
+//               "name": "Средний наличный курс",
+//               "description": "Курс покупки",
+//               "currentExchangeRate": {
+//                   "@type": "UnitPriceSpecification",
+//                   "price": "-",
+//                   "priceCurrency": "UAH"
+//               }
+//           },
+//           {
+//               "@type": "ExchangeRateSpecification",
+//               "currency": "USD",
+//               "name": "Средний наличный курс",
+//               "description": "Курс продажи",
+//               "currentExchangeRate": {
+//                   "@type": "UnitPriceSpecification",
+//                   "price": "-",
+//                   "priceCurrency": "UAH"
+//               }
+//           },
+//           {
+//               "@type": "ExchangeRateSpecification",
+//               "currency": "EUR",
+//               "name": "Средний наличный курс",
+//               "description": "Курс покупки",
+//               "currentExchangeRate": {
+//                   "@type": "UnitPriceSpecification",
+//                   "price": "-",
+//                   "priceCurrency": "UAH"
+//               }
+//           },
+//           {
+//               "@type": "ExchangeRateSpecification",
+//               "currency": "EUR",
+//               "name": "Средний наличный курс",
+//               "description": "Курс продажи",
+//               "currentExchangeRate": {
+//                   "@type": "UnitPriceSpecification",
+//                   "price": "-",
+//                   "priceCurrency": "UAH"
+//               }
+//           }
+//       ]
+//   }
+// };
+{/* <script data-rh="true"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        /> */}
 export default function Kurs() {
   return (
     <div className={styles.page}>
@@ -34,13 +109,13 @@ export default function Kurs() {
                 Курс валют у обмінниках на <CurrentTime />
               </h1>
                 <p className={styles.pageP}>
-                  Завжди в наявності є гривня та валюта, якщо у Вас велика сума на замовлення ми обов&apos;язково вам надамо її
-                </p>
-                <p className={styles.pageP}>
                   Ми завжди стежимо за актуальним ринковим курсом валют, у нас ви можете обміняти за найвигіднішим курсом
                 </p>
                 <p className={styles.pageP}>
                   Ми пропонуємо нашим клієнтам найнижчу комісію за купівлю старої валюти, оскільки ми працюємо напряму без посередників.
+                </p>
+                <p className={styles.pageP}>
+                  Завжди в наявності є гривня та валюта, якщо у Вас велика сума на замовлення ми обов&apos;язково вам надамо її
                 </p>
 
             <Link href="/" className={styles.button}>Як забронювати курс?</Link>
